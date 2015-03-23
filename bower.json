@@ -1,0 +1,23 @@
+{
+  "name": "3-16-react",
+  "version": "1.0.0",
+  "homepage": "https://github.com/samhamm/CF-Mar16-react",
+  "authors": [
+    "Sam Hamm <samhamm@gmail.com>"
+  ],
+  "description": "Assignment for Code Fellows JavaScript Development Accelerator: Use React.js to build a client side CRUD (the create and read portion anyway) app for your single resource JSON api.)",
+  "main": "server.js",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "react": "~0.13.0",
+    "jquery": "~2.1.3"
+  }
+}

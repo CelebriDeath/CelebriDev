@@ -1,0 +1,21 @@
+
+# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
+.grunt
+
+# Dependency directories
+**/node_modules/
+**/bower_components/
+
+# "Mac droppings"
+**/.DS_Store
+
+# Mongo DB directories
+**/db/
+
+# Build stuff
+ **/build/
+ **/test-bundle.js
+ **/*bundle*
+
+# App Database
+db-cel-dev/
