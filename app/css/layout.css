@@ -1,0 +1,43 @@
+.footer {
+  clear: both;
+}
+
+.clear {
+  clear: both;
+}
+
+.cf:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.contentBox {
+  padding: 1em;
+}
+
+.siteNav li{
+  display: inline-block;
+  padding-right: .5em;
+}
+
+.bio {
+  padding-top: 1em;
+}
+
+.photoLink {
+  margin: 1em 0;
+}
+
+.team {
+  width: 50%;
+}
+
+
+@media screen and (min-width: 30em) {
+
+  .contain {
+    width: 75%;
+    margin: 0 auto;
+  }
+}
