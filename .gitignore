@@ -13,9 +13,9 @@
 **/db/
 
 # Build stuff
- **/build/
- **/test-bundle.js
- **/*bundle*
+# **/build/
+# **/test-bundle.js
+# **/*bundle*
 
 # App Database
 db-cel-dev/
