@@ -48,19 +48,19 @@ table {
 
 @font-face {
 font-family: Cicle-strong;
-src: url("../Cicle_Gordita.ttf") format("opentype");
+src: url("../fonts/Cicle_Gordita.ttf") format("opentype");
 font-style: bold;
 }
 
 @font-face {
 font-family: Cicle;
-src: url("../Cicle_Fina.ttf") format("opentype");
+src: url("../fonts/Cicle_Fina.ttf") format("opentype");
 font-style: normal;
 }
 
 @font-face {
 font-family: Oil;
-src: url("../Oil Can.ttf") format("opentype");
+src: url("../fonts/Oil Can.ttf") format("opentype");
 }
 
 a {
