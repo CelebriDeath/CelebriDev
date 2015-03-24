@@ -3,6 +3,10 @@ p, h1, h2, li {
   font-size: 4em;
 }
 
+.grayBack {
+  background-color: #555;
+}
+
 .header {
   background-color: #1e1e1e;
   padding: 2em 0;
@@ -95,6 +99,10 @@ p, h1, h2, li {
   padding: 1em 0;
 }
 
+.contentChunk {
+  border-bottom: 1px solid #ccb20a;
+}
+
 @media screen and (min-width: 62em) {
 
   p, h1, h2, li {
@@ -107,6 +115,7 @@ p, h1, h2, li {
 
   .header {
     padding: 2em;
+    background-color: #1e1e1e;
   }
 
   .heading1, .heading2{
@@ -134,11 +143,19 @@ p, h1, h2, li {
 @media screen and (min-width: 65em) {
 
   p, h1, h2, li {
-  font-size: 1em;
+  font-size: 1.2em;
   }
 
   .heading1, .heading2{
     font-size: 1.6em;
+  }
+
+  .contain {
+    background-color: #fff;
+  }
+
+  .header {
+    background-color: #1e1e1e;
   }
 
   .thumb {
@@ -161,9 +178,6 @@ p, h1, h2, li {
     background-size: cover;
   }
 
-  .contain {
-    background-color: #fff;
-  }
 
   .location {
     width: 25%;
