@@ -1,3 +1,5 @@
+
+
 .floatLeft {
   float: left;
 }
@@ -26,12 +28,13 @@
 
 .social li {
   float: right;
-  width: 3em;
+  width: 8rem;
   display: inline-block;
   padding-right: 1em;
 }
 
 .siteNav li{
+  font-size: 4em;
   display: inline-block;
   padding-right: .5em;
 }
