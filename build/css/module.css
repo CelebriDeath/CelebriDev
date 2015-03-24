@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
 p, h1, h2, li {
-=======
-p, h1, h2 {
->>>>>>> master
   font-size: 4em;
 }
 
@@ -134,7 +130,6 @@ p, h1, h2 {
   }
 
 }
-
 
 @media screen and (min-width: 65em) {
 

@@ -12,6 +12,22 @@ module.exports = function (app) {
                 mapTypeId:google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            var marker = new google.maps.Marker({
+                position: mapProp.center,
+                map: map,
+                draggable:true,
+                animation: google.maps.Animation.DROP,
+                title: 'Hello World!'
+            });
+            google.maps.event.addListener(marker, 'click', toggleBounce);
+            function toggleBounce() {
+
+                if (marker.getAnimation() != null) {
+                    marker.setAnimation(null);
+                } else {
+                    marker.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            }
             google.maps.event.addDomListener(window, 'load', initialize);
 
         };

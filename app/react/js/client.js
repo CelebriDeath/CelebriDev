@@ -217,4 +217,4 @@ var CelebsApp = React.createClass({
   }
 });
 
-React.render(<CelebsApp celebsBaseUrl={'/api/v1/celebs'}/>, document.body);
+React.render(<CelebsApp celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("data-entry"));

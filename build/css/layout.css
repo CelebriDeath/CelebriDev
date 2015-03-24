@@ -28,11 +28,7 @@
 
 .social li {
   float: right;
-<<<<<<< HEAD
   width: 10rem;
-=======
-  width: 8rem;
->>>>>>> master
   display: inline-block;
   padding-right: 1em;
 }
@@ -60,7 +56,6 @@
   .social li {
     width: 8rem;
   }
-
 
 }
 
