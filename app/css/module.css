@@ -1,5 +1,5 @@
 
-p, h1, h2 {
+p, h1, h2, li {
   font-size: 4em;
 }
 
@@ -63,7 +63,7 @@ p, h1, h2 {
 }
 
 .dates {
-  font-size: .8em;
+  font-size: 3em;
 }
 
 .button {
@@ -86,7 +86,7 @@ p, h1, h2 {
 }
 
 .headshot {
-  width: 6em;
+  width: 40%;
 }
 
 .location {
@@ -95,14 +95,54 @@ p, h1, h2 {
   padding: 1em 0;
 }
 
-@media screen and (min-width: 65em) {
+@media screen and (min-width: 62em) {
 
-  .thumb {
-    width: 20%;
+  p, h1, h2, li {
+    font-size: 2em;
   }
 
   .title {
     font-size: 3em;
+  }
+
+  .header {
+    padding: 2em;
+  }
+
+  .heading1, .heading2{
+    font-size: 2.7em;
+  }
+
+  .thumb {
+    width: 25%;
+  }
+
+  .button {
+    font-size: 1.6em;
+  }
+
+  .location {
+    width: 40%;
+  }
+
+  .dates {
+    font-size: 2em;
+  }
+
+}
+
+@media screen and (min-width: 65em) {
+
+  p, h1, h2, li {
+  font-size: 1em;
+  }
+
+  .heading1, .heading2{
+    font-size: 1.6em;
+  }
+
+  .thumb {
+    width: 20%;
   }
 
   .heading1 {
@@ -125,13 +165,18 @@ p, h1, h2 {
     background-color: #fff;
   }
 
-  .header {
-    background-color: #1e1e1e;
-  }
-
   .location {
     width: 25%;
   }
+
+  .button {
+    font-size: 1em;
+  }
+
+  .dates {
+  font-size: 1em;
+  }
+
 }
 
 .
