@@ -14,19 +14,20 @@ require('./services/api-service')(CelebriDeath);
 require('./constants/constants')(CelebriDeath);
 
 //controllers
-require('./profiles/random-profile-controller')(CelebriDeath);
+require('./profiles/controllers/random-profile-controller')(CelebriDeath);
 
 //directives
 //require('./directives/dummy_directive')(CelebriDeath);
 //require('./directives/create_resource_directive')(CelebriDeath);
+require('./profiles/directives/random-profile-directive')(CelebriDeath);
 
-CelebriDeath.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-        .when('/profile', {
-            templateUrl: 'templates/profiles/random_profile.html',
-            controller: 'randomProfileController'
-        })
-        .otherwise({
-            templateUrl: 'templates/four_oh_four.html'
-        })
-}]);
+//CelebriDeath.config(['$routeProvider', function ($routeProvider) {
+//    $routeProvider
+//        .when('/zh.html', {
+//            templateUrl: 'templates/profiles/random_profile.html',
+//            controller: 'randomProfileController'
+//        })
+//        .otherwise({
+//            templateUrl: 'four_oh_four.html'
+//        })
+//}]);

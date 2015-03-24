@@ -5,6 +5,7 @@ module.exports = function (app) {
 
         $scope.randomProfile = {};
         $rootScope.profiles = profileData.allProfiles;
+        var pictureUrls = profileData.pictureUrls;
 
         $scope.getRandom = function () {
             ApiService.Organizer.getByUserId($routeParams.userId)
@@ -19,8 +20,9 @@ module.exports = function (app) {
         };
 
         $scope.init = function () {
-            var randomIndex = Math.floor(Math.random() * data.length);
+            var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
             $scope.randomProfile = $rootScope.profiles[randomIndex];
+            $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
         }
 
         $scope.random = function () {

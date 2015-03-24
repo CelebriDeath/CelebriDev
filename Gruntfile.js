@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 
     browserify: {
       dev: {
-        src: ['app/react/**/*.js', 'app/angular/**/*.js'],
+        src: ['app/angular/**/*.js'],
         dest: 'build/bundle.js'
       },
 
