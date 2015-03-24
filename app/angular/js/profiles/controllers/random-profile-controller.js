@@ -23,10 +23,15 @@ module.exports = function (app) {
             var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
             $scope.randomProfile = $rootScope.profiles[randomIndex];
             $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
-        }
+        };
 
         $scope.random = function () {
             $scope.init();
+        };
+
+        $scope.initMap = function () {
+            $scope.map = {center: {latitude: 51.219053, longitude: 4.404418}, zoom: 14};
+            $scope.options = {scrollwheel: false};
         }
 
     }]);

@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       build: {
         expand: true,
         cwd: 'app/',
-        src: ['**/*.html', '**/*.css', '**/*.png', 'fonts/**/*', 'img/**/*'],
+        src: ['**/*.html', '**/*.css', '**/*.png', 'fonts/**/*', 'img/**/*', 'vendors/lodash.js'],
         dest: 'build/',
         flatten: false,
         filter: 'isFile'
