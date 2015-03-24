@@ -91,7 +91,7 @@
   padding: 1em 0;
 }
 
-@media screen and (min-width: 30em) {
+@media screen and (min-width: 65em) {
 
   .thumb {
     width: 20%;
