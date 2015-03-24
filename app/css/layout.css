@@ -28,7 +28,7 @@
 
 .social li {
   float: right;
-  width: 8rem;
+  width: 10rem;
   display: inline-block;
   padding-right: 1em;
 }
@@ -47,13 +47,28 @@
   margin: 1em 0;
 }
 
+@media screen and (min-width: 62em) {
 
+  .siteNav li {
+    font-size: 2em;
+  }
+
+  .social li {
+    width: 8rem;
+  }
+
+
+}
 
 @media screen and (min-width: 65em) {
 
   .contain {
     width: 75%;
     margin: 0 auto;
+  }
+
+  .siteNav li{
+    font-size: 1em;
   }
 
   .team {
@@ -68,5 +83,8 @@
     margin-left: 1em;
   }
 
+  .social li {
+    width: 4rem;
+  }
 
 }
