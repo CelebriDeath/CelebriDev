@@ -60,7 +60,7 @@ font-style: normal;
 
 @font-face {
 font-family: Oil;
-src: url("../fonts/Oil Can.ttf") format("opentype");
+src: url("../fonts/Oil_Can.ttf") format("opentype");
 }
 
 a {
@@ -85,5 +85,3 @@ img {
 strong {
   font-family: Cicle-strong;
 }
-
-
