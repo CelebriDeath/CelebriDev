@@ -12,6 +12,10 @@ p, h1, h2, li {
   padding: 2em 0;
 }
 
+.titleFont {
+  font-family: Oil;
+}
+
 .title {
   font-family: Oil;
   color: #555;
@@ -137,6 +141,15 @@ p, h1, h2, li {
   .dates {
     font-size: 2em;
   }
+
+  .flex-container {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: flex-start;
+    align-items: center;
+}
 
 }
 
