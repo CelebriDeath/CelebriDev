@@ -19,8 +19,3 @@
 
 # App Database
 db-cel-dev/
-
-# IDE .idea
-.idea
-
-build
