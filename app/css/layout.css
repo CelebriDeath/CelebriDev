@@ -1,3 +1,9 @@
+
+
+.floatLeft {
+  float: left;
+}
+
 .footer {
   clear: both;
 }
@@ -16,7 +22,19 @@
   padding: 1em;
 }
 
+.contentChunk {
+  padding: 2em 0;
+}
+
+.social li {
+  float: right;
+  width: 8rem;
+  display: inline-block;
+  padding-right: 1em;
+}
+
 .siteNav li{
+  font-size: 4em;
   display: inline-block;
   padding-right: .5em;
 }
@@ -29,15 +47,26 @@
   margin: 1em 0;
 }
 
-.team {
-  width: 50%;
-}
 
 
-@media screen and (min-width: 30em) {
+@media screen and (min-width: 65em) {
 
   .contain {
     width: 75%;
     margin: 0 auto;
   }
+
+  .team {
+    float: left;
+    width: 40%;
+  }
+
+  .details {
+    width: 50%;
+    display: inline-block;
+    clear: none;
+    margin-left: 1em;
+  }
+
+
 }

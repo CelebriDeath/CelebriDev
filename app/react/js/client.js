@@ -93,68 +93,68 @@ var CelebForm = React.createClass({
         <h4>1. Most data can be pulled from Wikipedia and www.findagrave.com; do not worry about giving citations.</h4>
         <h4>2. For the coordinates, look for them inside the link on Google Maps. Will look something like the example below.</h4>
         <h4>3. THANKS! Every little bit helps. We can edit later.</h4>
-        <p><label htmlFor="new-moniker">Moniker: </label>
-        <input id="new-moniker" type="text" value={this.state.newCeleb.moniker} onChange={this.profileChange} name="new-moniker" /> (Marilyn Monroe)</p>
+        <p><label htmlFor="new-moniker"></label>
+        <input id="new-moniker" type="text" value={this.state.newCeleb.moniker} onChange={this.profileChange} name="new-moniker" /> Moniker: (Marilyn Monroe)</p>
 
-        <p><label htmlFor="new-category1">Category 1: </label>
-        <input id="new-category1" type="text" value={this.state.newCeleb.category1} onChange={this.profileChange} name="new-category1" /> (Actor)</p>
+        <p><label htmlFor="new-category1"></label>
+        <input id="new-category1" type="text" value={this.state.newCeleb.category1} onChange={this.profileChange} name="new-category1" /> Category 1: (Actor)</p>
 
-        <p><label htmlFor="new-category2">Category 2: </label>
-        <input id="new-category2" type="text" value={this.state.newCeleb.category2} onChange={this.profileChange} name="new-category2" /> (Model)</p>
+        <p><label htmlFor="new-category2"></label>
+        <input id="new-category2" type="text" value={this.state.newCeleb.category2} onChange={this.profileChange} name="new-category2" /> Category 2: (Model)</p>
 
-        <p><label htmlFor="new-category3">Category 3: </label>
-        <input id="new-category3" type="text" value={this.state.newCeleb.category3} onChange={this.profileChange} name="new-category3" /> (Wife of Joe DiMaggio and Arthur Miller)</p>
+        <p><label htmlFor="new-category3"></label>
+        <input id="new-category3" type="text" value={this.state.newCeleb.category3} onChange={this.profileChange} name="new-category3" /> Category 3: (Wife of Joe DiMaggio and Arthur Miller)</p>
 
-        <p><label htmlFor="new-lastName">Last Name: </label>
-        <input id="new-lastName" type="text" value={this.state.newCeleb.lastName} onChange={this.profileChange} name="new-lastName" /> (Baker)</p>
+        <p><label htmlFor="new-lastName"></label>
+        <input id="new-lastName" type="text" value={this.state.newCeleb.lastName} onChange={this.profileChange} name="new-lastName" /> Last Name: (Baker)</p>
 
-        <p><label htmlFor="new-firstName">First Name: </label>
-        <input id="new-firstName" type="text" value={this.state.newCeleb.firstName} onChange={this.profileChange} name="new-firstName" /> (Norma)</p>
+        <p><label htmlFor="new-firstName"></label>
+        <input id="new-firstName" type="text" value={this.state.newCeleb.firstName} onChange={this.profileChange} name="new-firstName" /> First Name: (Norma)</p>
 
-        <p><label htmlFor="new-middleName">Middle Name: </label>
-        <input id="new-middleName" type="text" value={this.state.newCeleb.middleName} onChange={this.profileChange} name="new-middleName" /> (Jeane)</p>
+        <p><label htmlFor="new-middleName"></label>
+        <input id="new-middleName" type="text" value={this.state.newCeleb.middleName} onChange={this.profileChange} name="new-middleName" /> Middle Name: (Jeane)</p>
 
-        <p><label htmlFor="new-suffix">Suffix: </label>
-        <input id="new-suffix" type="text" value={this.state.newCeleb.suffix} onChange={this.profileChange} name="new-suffix" /> ( )</p>
+        <p><label htmlFor="new-suffix"></label>
+        <input id="new-suffix" type="text" value={this.state.newCeleb.suffix} onChange={this.profileChange} name="new-suffix" /> Suffix: ( )</p>
 
-        <p><label htmlFor="new-birth">Birth: </label>
-        <input id="new-birth" type="text" value={this.state.newCeleb.birth} onChange={this.profileChange} name="new-birth" /> (19260601) YYYYMMDD</p>
+        <p><label htmlFor="new-birth"></label>
+        <input id="new-birth" type="text" value={this.state.newCeleb.birth} onChange={this.profileChange} name="new-birth" /> Birth: (19260601) YYYYMMDD</p>
 
-        <p><label htmlFor="new-death">Death: </label>
-        <input id="new-death" type="text" value={this.state.newCeleb.death} onChange={this.profileChange} name="new-death" /> (19620805) YYYYMMDD</p>
+        <p><label htmlFor="new-death"></label>
+        <input id="new-death" type="text" value={this.state.newCeleb.death} onChange={this.profileChange} name="new-death" /> Death: (19620805) YYYYMMDD</p>
 
-        <p><label htmlFor="new-age">Age: </label>
-        <input id="new-age" type="text" value={this.state.newCeleb.age} onChange={this.profileChange} name="new-age" /> (36)</p>
+        <p><label htmlFor="new-howDied"></label>
+        <input id="new-howDied" type="text" value={this.state.newCeleb.howDied} onChange={this.profileChange} name="new-howDied" /> How Died: (Overdose)</p>
 
-        <p><label htmlFor="new-death">Bio: </label>
-        <input id="new-bio" type="text" value={this.state.newCeleb.bio} onChange={this.profileChange} name="new-bio" /> (Just cut and paste the first paragraph of Wikipedia for now)</p>
+        <p><label htmlFor="new-age"></label>
+        <input id="new-age" type="text" value={this.state.newCeleb.age} onChange={this.profileChange} name="new-age" /> Age: (36)</p>
 
-        <p><label htmlFor="new-photoLink">Photo Link: </label>
-        <input id="new-photoLink" type="text" value={this.state.newCeleb.photoLink} onChange={this.profileChange} name="new-photoLink" />  ("http://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Marilyn_Monroe_-_publicity.JPG/220px-Marilyn_Monroe_-_publicity.JPG")</p>
+        <p><label htmlFor="new-death"></label>
+        <input id="new-bio" type="text" value={this.state.newCeleb.bio} onChange={this.profileChange} name="new-bio" /> Bio: (Just cut and paste the first paragraph of Wikipedia for now)</p>
 
-        <p><label htmlFor="new-burialCoords">Grave - Coordinates: </label>
-        <input id="new-burialCoords" type="text" value={this.state.newCeleb.burialCoords} onChange={this.profileChange} name="new-burialCoords" /> (34.05847, -118.43979)</p>
+        <p><label htmlFor="new-photoLink"></label>
+        <input id="new-photoLink" type="text" value={this.state.newCeleb.photoLink} onChange={this.profileChange} name="new-photoLink" />  Photo Link: ("right-click on the image to get its link")</p>
 
-        <p><label htmlFor="new-burialAddy">Grave - Address: </label>
-        <input id="new-burialAddy" type="text" value={this.state.newCeleb.burialAddy} onChange={this.profileChange} name="new-burialAddy" /> (1218 Glendon Avenue)</p>
+        <p><label htmlFor="new-burialCoords"></label>
+        <input id="new-burialCoords" type="text" value={this.state.newCeleb.burialCoords} onChange={this.profileChange} name="new-burialCoords" /> Grave - Coordinates: (34.05847, -118.43979)</p>
 
-        <p><label htmlFor="new-burialCity">Grave - City: </label>
-        <input id="new-burialCity" type="text" value={this.state.newCeleb.burialCity} onChange={this.profileChange} name="new-burialCity" /> (Los Angeles)</p>
+        <p><label htmlFor="new-burialAddy"></label>
+        <input id="new-burialAddy" type="text" value={this.state.newCeleb.burialAddy} onChange={this.profileChange} name="new-burialAddy" /> Grave - Address: (1218 Glendon Avenue)</p>
 
-        <p><label htmlFor="new-burialState">Grave - State: </label>
-        <input id="new-burialState" type="text" value={this.state.newCeleb.burialState} onChange={this.profileChange} name="new-burialState" /> (CA)</p>
+        <p><label htmlFor="new-burialCity"></label>
+        <input id="new-burialCity" type="text" value={this.state.newCeleb.burialCity} onChange={this.profileChange} name="new-burialCity" /> Grave - City: (Los Angeles)</p>
 
-        <p><label htmlFor="new-burialZIP">Grave - ZIP: </label>
-        <input id="new-burialZIP" type="text" value={this.state.newCeleb.burialZIP} onChange={this.profileChange} name="new-burialZIP" /> (90024)</p>
+        <p><label htmlFor="new-burialState"></label>
+        <input id="new-burialState" type="text" value={this.state.newCeleb.burialState} onChange={this.profileChange} name="new-burialState" /> Grave - State: (CA)</p>
 
-        <p><label htmlFor="new-burialCountry">Grave - Country: </label>
-        <input id="new-burialCountry" type="text" value={this.state.newCeleb.burialCountry} onChange={this.profileChange} name="new-burialCountry" /> (USA)</p>
+        <p><label htmlFor="new-burialZIP"></label>
+        <input id="new-burialZIP" type="text" value={this.state.newCeleb.burialZIP} onChange={this.profileChange} name="new-burialZIP" /> Grave - ZIP: (90024)</p>
 
-        <p><label htmlFor="new-burialFacility">Grave - Facility: </label>
-        <input id="new-burialFacility" type="text" value={this.state.newCeleb.burialFacility} onChange={this.profileChange} name="new-burialFacility" /> (Westwood Village Memorial Park Cemetery)</p>
+        <p><label htmlFor="new-burialCountry"></label>
+        <input id="new-burialCountry" type="text" value={this.state.newCeleb.burialCountry} onChange={this.profileChange} name="new-burialCountry" /> Grave - Country: (USA)</p>
 
-        <p><label htmlFor="new-howDied">How Died: </label>
-        <input id="new-howDied" type="text" value={this.state.newCeleb.howDied} onChange={this.profileChange} name="new-howDied" /> (Overdose)</p>
+        <p><label htmlFor="new-burialFacility"></label>
+        <input id="new-burialFacility" type="text" value={this.state.newCeleb.burialFacility} onChange={this.profileChange} name="new-burialFacility" /> Grave - Facility: (Westwood Village Memorial Park Cemetery)</p>
 
         <button type="submit">Create New Celebrity</button>
       </form>

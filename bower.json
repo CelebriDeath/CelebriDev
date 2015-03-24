@@ -24,6 +24,7 @@
     "angular-google-maps": "~2.0.17"
   },
   "resolutions": {
-    "lodash": "~2.4.1"
+    "lodash": "~2.4.1",
+    "chance": "~0.7.3"
   }
 }

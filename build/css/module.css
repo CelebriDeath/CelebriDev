@@ -1,23 +1,32 @@
 
+p, h1, h2 {
+  font-size: 4em;
+}
 
 .header {
   background-color: #1e1e1e;
-  padding: 1em;
+  padding: 2em 0;
 }
 
 .title {
   font-family: Oil;
   color: #555;
-  font-size: 1.618em;
+  font-size: 6em;
 }
 
 .heading1 {
-  font-size: 1.6em;
+  font-size: 5em;
 }
 
 .heading2 {
   color: #ccb20a;
-  font-size: 1.1em;
+  font-size: 5em;
+}
+
+.headingBack {
+  background-color: #1e1e1e;
+  width: 100%;
+  padding: 0.25em 1em;
 }
 
 .backdrop {
@@ -36,7 +45,7 @@
 
 .thumb {
   float: left;
-  width: 25%;
+  width: 50%;
   margin-right: 1em;
 }
 
@@ -58,7 +67,7 @@
 }
 
 .button {
-  font-size: .8em;
+  font-size: 3em;
   color: #fff;
   border-radius: 7px;
   border: none;
@@ -71,8 +80,22 @@
   padding: 1em;
 }
 
+.footer {
+  padding: 1em;
+  border-top: 1px solid #ccb20a;
+}
 
-@media screen and (min-width: 30em) {
+.headshot {
+  width: 6em;
+}
+
+.location {
+  width: 100%;
+  clear: both;
+  padding: 1em 0;
+}
+
+@media screen and (min-width: 65em) {
 
   .thumb {
     width: 20%;
@@ -92,7 +115,10 @@
 
   body {
     background-color: #aaa;
-    padding-top: 4em;
+    padding: 4em 0;
+    background-image: url('../img/site/backdrop.jpg');
+    background-attachment: fixed;
+    background-size: cover;
   }
 
   .contain {
@@ -102,4 +128,10 @@
   .header {
     background-color: #1e1e1e;
   }
+
+  .location {
+    width: 25%;
+  }
 }
+
+.
