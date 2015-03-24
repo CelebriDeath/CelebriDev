@@ -23,7 +23,7 @@
 }
 
 .contentChunk {
-  padding: 2em 0;
+  padding: 2em 2em;
 }
 
 .social li {
@@ -37,6 +37,8 @@
   font-size: 4em;
   display: inline-block;
   padding-right: .5em;
+  border-bottom: 2px solid #1e1e1e;
+  padding-bottom: .5em;
 }
 
 .bio {
