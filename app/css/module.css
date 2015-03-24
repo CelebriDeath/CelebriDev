@@ -1,5 +1,4 @@
 
-
 .header {
   background-color: #1e1e1e;
   padding: 1em;
@@ -18,6 +17,12 @@
 .heading2 {
   color: #ccb20a;
   font-size: 1.1em;
+}
+
+.headingBack {
+  background-color: #1e1e1e;
+  width: 100%;
+  padding: 0.25em 1em;
 }
 
 .backdrop {
@@ -71,6 +76,20 @@
   padding: 1em;
 }
 
+.footer {
+  padding: 1em;
+  border-top: 1px solid #ccb20a;
+}
+
+.headshot {
+  width: 6em;
+}
+
+.location {
+  width: 100%;
+  clear: both;
+  padding: 1em 0;
+}
 
 @media screen and (min-width: 30em) {
 
@@ -92,7 +111,10 @@
 
   body {
     background-color: #aaa;
-    padding-top: 4em;
+    padding: 4em 0;
+    background-image: url('../img/site/backdrop.jpg');
+    background-attachment: fixed;
+    background-size: cover;
   }
 
   .contain {
@@ -101,5 +123,9 @@
 
   .header {
     background-color: #1e1e1e;
+  }
+
+  .location {
+    width: 25%;
   }
 }
