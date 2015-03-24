@@ -42,7 +42,7 @@ module.exports = function(grunt) {
       build: {
         expand: true,
         cwd: 'app/',
-        src: ['**/*.html', '**/*.css', '**/*.png', 'fonts/**/*', 'img/**/*'],
+        src: ['**/*.html', '**/*.css', '**/*.png', 'fonts/**/*', 'img/**/*', 'vendors/lodash.js'],
         dest: 'build/',
         flatten: false,
         filter: 'isFile'
@@ -51,7 +51,7 @@ module.exports = function(grunt) {
 
     browserify: {
       dev: {
-        src: ['app/react/**/*.js', 'app/angular/**/*.js'],
+        src: ['app/angular/**/*.js'],
         dest: 'build/bundle.js'
       },
 
