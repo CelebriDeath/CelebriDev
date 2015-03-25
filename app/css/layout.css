@@ -26,6 +26,10 @@
   padding: 2em 2em;
 }
 
+.location {
+  display: inline-block;
+}
+
 .social li {
   float: right;
   width: 10rem;
@@ -37,7 +41,7 @@
   font-size: 4em;
   display: inline-block;
   padding-right: .5em;
-  border-bottom: 2px solid #1e1e1e;
+  border-bottom: 2px solid transparent;
   padding-bottom: .5em;
 }
 
@@ -49,7 +53,27 @@
   margin: 1em 0;
 }
 
-@media screen and (min-width: 62em) {
+.preview {
+  position: relative;
+}
+
+.previewButton {
+  float: right;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+.contactIcon {
+  display: inline-block;
+  width: 5.5em;
+}
+
+.team {
+  width: 90%;
+}
+
+@media screen and (min-width: 60em) {
 
   .siteNav li {
     font-size: 2em;
@@ -64,7 +88,7 @@
 @media screen and (min-width: 65em) {
 
   .contain {
-    width: 75%;
+    width: 100%;
     margin: 0 auto;
   }
 
@@ -74,7 +98,7 @@
 
   .team {
     float: left;
-    width: 40%;
+    width: 15%;
   }
 
   .details {
@@ -86,6 +110,14 @@
 
   .social li {
     width: 4rem;
+  }
+
+  .contactIcon {
+    width: 1.5em;
+  }
+
+  .contentChunk {
+    width: 60%;
   }
 
 }
