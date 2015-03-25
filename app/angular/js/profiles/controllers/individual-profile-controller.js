@@ -1,29 +1,20 @@
 'use strict';
 
 module.exports = function (app) {
-    app.controller('randomProfileController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', function ($rootScope, $scope, ApiService, $cookies, $location) {
+    app.controller('individualProfileController', ['$rootScope', '$scope', 'ApiService', '$location', '$routeParams', function ($rootScope, $scope, ApiService, $location, $routeParams) {
 
-        $scope.randomProfile = {};
-
-        $scope.getRandom = function () {
+        $scope.init = function () {
             ApiService.Profiles.get()
                 .success(function (data, status) {
 
                     $rootScope.profiles = data;
-                    $scope.randomIndex = Math.floor(Math.random() * data.length);
-                    $scope.randomProfile = $rootScope.profiles[$scope.randomIndex];
+                    $scope.randomProfile = $rootScope.profiles[parseInt($routeParams.id)];
                     $scope.initMap();
                     $rootScope.currentIndex = $scope.randomIndex;
                 })
                 .error(function (data) {
                     $location.path('/');
                 });
-        };
-
-        $scope.init = function () {
-            var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
-            $scope.randomProfile = $rootScope.profiles[randomIndex];
-            $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
         };
 
         $scope.initMap = function () {
@@ -40,6 +31,7 @@ module.exports = function (app) {
                 draggable:true,
                 animation: google.maps.Animation.DROP
             });
+
             google.maps.event.addListener(marker, 'click', toggleBounce);
             function toggleBounce() {
 
@@ -51,6 +43,7 @@ module.exports = function (app) {
             }
 
         };
+
 
     }]);
 };

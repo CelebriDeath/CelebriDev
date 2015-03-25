@@ -1,0 +1,12 @@
+<section data-ng-controller="randomProfileController" data-ng-init="getRandom()">
+    <!--<button data-ng-click="random()">Random Profile</button>-->
+    <h1 class="moniker heading1">{{randomProfile.firstName + ' ' + randomProfile.middleName + ' ' + randomProfile.lastName}}</h1>
+
+    <img class="photoLink thumb"
+         data-ng-src="{{randomProfile.photoLink}}">
+
+    <p class="bio clear">{{randomProfile.bio}}</p>
+
+    <div data-google-map-directive></div>
+    <a class="button previewButton" data-ng-href="/#/profiles/{{randomIndex}}">View full profile</a>
+</section>
