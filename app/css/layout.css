@@ -4,6 +4,10 @@
   float: left;
 }
 
+.floatRight {
+  float: right;
+}
+
 .footer {
   clear: both;
 }
@@ -28,6 +32,7 @@
 
 .location {
   display: inline-block;
+  overflow: hidden;
 }
 
 .social li {
