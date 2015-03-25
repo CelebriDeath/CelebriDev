@@ -1,6 +1,6 @@
-<section data-ng-controller="randomProfileController" data-ng-init="getRandom()">
+<section ngCloak data-ng-controller="randomProfileController" data-ng-init="getRandom()">
     <!--<button data-ng-click="random()">Random Profile</button>-->
-    <h1 class="moniker heading1">{{randomProfile.firstName + ' ' + randomProfile.middleName + ' ' + randomProfile.lastName}}</h1>
+    <h1 class="moniker heading1">{{randomProfile.moniker}}</h1>
 
     <img class="photoLink thumb"
          data-ng-src="{{randomProfile.photoLink}}">
