@@ -28,8 +28,9 @@ module.exports = function (app) {
                     marker.setAnimation(google.maps.Animation.BOUNCE);
                 }
             }
-            google.maps.event.addDomListener(window, 'load', initialize);
 
         };
+        google.maps.event.addDomListener(window, 'load', $scope.initMap);
     }]);
 };
+
