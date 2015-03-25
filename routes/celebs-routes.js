@@ -13,6 +13,14 @@ module.exports = function(app) {
     });
   });
 
+  app.get('/celebs/:id', function(req, res) {
+    Celeb.findOne({_id: req.params.id}, function(err, data) {
+      if (err) return res.status(500).send({'msg': 'could not retrieve celebs'});
+
+      res.json(data);
+    });
+  });
+
   app.post('/celebs', function(req, res) {
     var newCeleb = new Celeb(req.body);
     newCeleb.save(function(err, celeb) {
