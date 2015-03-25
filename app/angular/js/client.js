@@ -16,7 +16,7 @@ require('./constants/constants')(CelebriDeath);
 
 //controllers
 require('./profiles/controllers/random-profile-controller')(CelebriDeath);
-require('./profiles/controllers/google-map-controller')(CelebriDeath);
+//require('./profiles/controllers/google-map-controller')(CelebriDeath);
 
 //directives
 //require('./directives/dummy_directive')(CelebriDeath);
