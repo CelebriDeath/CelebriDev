@@ -4,12 +4,12 @@ p, h1, h2, li {
 }
 
 .grayBack {
-  background-color: #555;
+  background-color: #fefefe;
 }
 
 .header {
   background-color: #1e1e1e;
-  padding: 2em 0;
+  padding: 1em 0;
 }
 
 .titleFont {
@@ -31,10 +31,15 @@ p, h1, h2, li {
   font-size: 5em;
 }
 
+.heading3 {
+  color: #ccb20a;
+  font-size: 5em;
+}
+
 .headingBack {
   background-color: #1e1e1e;
   width: 100%;
-  padding: 0.25em 1em;
+  padding: 0.25em .2em;
 }
 
 .backdrop {
@@ -85,7 +90,11 @@ p, h1, h2, li {
 }
 
 .team {
-  padding: 1em;
+  padding: .5em;
+  background-color: #fff;
+  border-radius: 2px;
+  border-bottom: 1px solid #ccb20a;
+  margin: .5em;
 }
 
 .footer {
@@ -94,36 +103,41 @@ p, h1, h2, li {
 }
 
 .headshot {
-  width: 40%;
+  width: 100%;
 }
 
 .location {
   width: 100%;
   clear: both;
-  padding: 1em 0;
 }
 
 .contentChunk {
   border-bottom: 1px solid #ccb20a;
 }
 
-@media screen and (min-width: 62em) {
+
+
+@media screen and (min-width: 60em) {
 
   p, h1, h2, li {
     font-size: 2em;
   }
 
   .title {
-    font-size: 3em;
+    font-size: 2em;
   }
 
   .header {
-    padding: 2em;
+    padding: .5em;
     background-color: #1e1e1e;
   }
 
   .heading1, .heading2{
     font-size: 2.7em;
+  }
+
+  .heading3 {
+    font-size: 2em;
   }
 
   .thumb {
@@ -147,9 +161,9 @@ p, h1, h2, li {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
-    align-content: flex-start;
-    align-items: center;
-}
+    align-content: space-between;
+    align-items: flex-start;
+  }
 
 }
 
@@ -157,10 +171,15 @@ p, h1, h2, li {
 
   p, h1, h2, li {
   font-size: 1.2em;
+  line-height: 1.3em;
   }
 
-  .heading1, .heading2{
+  .heading2{
     font-size: 1.6em;
+  }
+
+  .heading3 {
+    font-size: 1.2em;
   }
 
   .contain {
@@ -168,7 +187,18 @@ p, h1, h2, li {
   }
 
   .header {
-    background-color: #1e1e1e;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: transparent;
+  }
+
+  main {
+    position: relative;
+    top: 7em;
+    left: 0;
+
   }
 
   .thumb {
@@ -184,10 +214,10 @@ p, h1, h2, li {
   }
 
   body {
-    background-color: #aaa;
-    padding: 4em 0;
-    background-image: url('../img/site/backdrop.jpg');
-    background-attachment: fixed;
+    background-color: #1e1e1e;
+    padding: 0em 0;
+/*    background-image: url('../img/site/backdrop.jpg');
+*/    background-attachment: fixed;
     background-size: cover;
   }
 
@@ -204,6 +234,9 @@ p, h1, h2, li {
   font-size: 1em;
   }
 
+  .grayBack {
+  background-color: #efefef;
+  }
+
 }
 
-.
