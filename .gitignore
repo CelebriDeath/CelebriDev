@@ -19,6 +19,9 @@
 
 # App Database
 db-cel-dev/
+<<<<<<< HEAD
 
 # IDE .idea
 .idea
+=======
+>>>>>>> master
