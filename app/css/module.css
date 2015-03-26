@@ -41,10 +41,6 @@ p, h1, h2, li {
   font-size: 5em;
 }
 
-.caption {
-  margin: 3em;
-}
-
 .headingBack {
   background-color: #1e1e1e;
   width: 100%;
@@ -134,7 +130,12 @@ p, h1, h2, li {
   border-bottom: 1px solid #ccb20a;
 }
 
-
+.split {
+  width: 100%;
+  text-align: center;
+  padding-right: 25%;
+  padding-left: 25%;
+}
 
 @media screen and (min-width: 62em) {
 
@@ -166,6 +167,11 @@ p, h1, h2, li {
   .tagQuote {
     font-size: 1em;
     top: 50%;
+  }
+
+  .split {
+    width: 50%;
+    padding: 0;
   }
 
   .thumb {
