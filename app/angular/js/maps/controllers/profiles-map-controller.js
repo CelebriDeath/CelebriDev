@@ -16,12 +16,6 @@ module.exports = function (app) {
                 });
         };
 
-        //$scope.showAll = function () {
-        //    $scope.filteredProfile = $scope.allProfile;
-        //    alert($scope.filteredProfile);
-        //    $scope.initMap();
-        //};
-
         $scope.search = function (input) {
             $scope.filteredProfile = $scope.allProfile.filter(function (item) {
                 return item.moniker.indexOf(input) > -1;
