@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/base.css">
+    <link rel="stylesheet" type="text/css" href="css/module.css">
+    <link rel="stylesheet" type="text/css" href="css/layout.css">
+	<title>ZH</title>
+</head>
+<body data-ng-app="CelebriDeath">
+<header class="header contain">
+    <a href="index.html"><h1 class="title">CelebriDeath</h1></a>
+    <nav class="siteNav">
+        <ul>
+            <li><a href="profile.html">Profiles</a></li>
+            <li><a href="maps.html">Maps</a></li>
+            <li><a href="about.html">About</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div data-random-profile-directive></div>
+    <div data-google-map-directive></div>
+</main>
+<footer class="footer contain">
+    <p>&copy;2015</p>
+</footer>
+<script src="http://maps.googleapis.com/maps/api/js"></script>
+<script src="bundle.js"></script>
+</body>
+</html>
