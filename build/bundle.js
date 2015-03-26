@@ -2567,6 +2567,12 @@ function isObject(value) {
  */
 function isString(value) {return typeof value === 'string';}
 
+<<<<<<< HEAD
+}).call(this,require("buffer").Buffer)
+},{"buffer":16}],2:[function(require,module,exports){
+'use strict';
+=======
+>>>>>>> master
 
 /**
  * @ngdoc function
@@ -2647,6 +2653,12 @@ function isRegExp(value) {
 }
 
 
+<<<<<<< HEAD
+},{"./../../../bower_components/angular-cookies/angular-cookies.js":11,"./../../../bower_components/angular-route/angular-route.js":12,"./../../../bower_components/angular/angular":13,"./constants/constants":3,"./maps/controllers/profiles-map-controller":4,"./profiles/controllers/individual-profile-controller":5,"./profiles/controllers/random-profile-controller":6,"./profiles/directives/google-map-directive":7,"./services/api-service":8}],3:[function(require,module,exports){
+'use strict';
+var Chance = require('chance'),
+    chance = new Chance();
+=======
 /**
  * Checks if `obj` is a window object.
  *
@@ -2657,6 +2669,7 @@ function isRegExp(value) {
 function isWindow(obj) {
   return obj && obj.window === obj;
 }
+>>>>>>> master
 
 
 function isScope(obj) {
@@ -2678,16 +2691,74 @@ function isBlob(obj) {
   return toString.call(obj) === '[object Blob]';
 }
 
+<<<<<<< HEAD
+        $scope.randomProfile = {};
+        $scope.getAll = function () {
+            ApiService.Profiles.get()
+                .success(function (data, status) {
+                    $scope.allProfile = data;
+                    $scope.filteredProfile = $scope.allProfile;
+                    $scope.initMap();
+                })
+                .error(function (data) {
+                    $location.path('/');
+                });
+        };
+
+        //$scope.showAll = function () {
+        //    $scope.filteredProfile = $scope.allProfile;
+        //    alert($scope.filteredProfile);
+        //    $scope.initMap();
+        //};
+
+        $scope.search = function (input) {
+            alert(input);
+            $scope.filteredProfile = $scope.allProfile.filter(function (item) {
+                return item.moniker.indexOf(input) > -1;
+            });
+
+            $scope.initMap();
+            $scope.filteredProfile = $scope.allProfile;
+        };
+
+        $scope.initMap = function () {
+            var mapProp = {
+                center:new google.maps.LatLng(39.234416, -94.848398),
+                zoom:3,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+            var infowindow = new google.maps.InfoWindow();
+=======
+>>>>>>> master
 
 function isBoolean(value) {
   return typeof value === 'boolean';
 }
 
 
+<<<<<<< HEAD
+            for (i = 0; i < $scope.filteredProfile.length; i++) {
+                var geoLocation = $scope.filteredProfile[i].burialCoords.split(',');
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        var currentPerson = $scope.filteredProfile[i];
+                        var contentString =
+                                '<h2>' + currentPerson.moniker + '</h2>' +
+                                '<h3>' + currentPerson.category1 + '</h3>' +
+                                '<p><a href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
+=======
 function isPromiseLike(obj) {
   return obj && isFunction(obj.then);
 }
 
+>>>>>>> master
 
 var trim = function(value) {
   return isString(value) ? value.trim() : value;
@@ -2747,6 +2818,10 @@ function arrayRemove(array, value) {
   return value;
 }
 
+<<<<<<< HEAD
+module.exports = function (app) {
+    app.controller('individualProfileController', ['$rootScope', '$scope', 'ApiService', '$location', '$routeParams', function ($rootScope, $scope, ApiService, $location, $routeParams) {
+=======
 /**
  * @ngdoc function
  * @name angular.copy
@@ -2832,6 +2907,7 @@ function copy(source, destination, stackSource, stackDest) {
 
     stackSource = stackSource || [];
     stackDest = stackDest || [];
+>>>>>>> master
 
     if (isObject(source)) {
       var index = stackSource.indexOf(source);
@@ -2903,6 +2979,11 @@ function shallowCopy(src, dst) {
   return dst || src;
 }
 
+<<<<<<< HEAD
+},{}],6:[function(require,module,exports){
+'use strict';
+=======
+>>>>>>> master
 
 /**
  * @ngdoc function
@@ -3004,6 +3085,10 @@ function sliceArgs(args, startIndex) {
   return slice.call(args, startIndex || 0);
 }
 
+<<<<<<< HEAD
+},{}],7:[function(require,module,exports){
+'use strict';
+=======
 
 /* jshint -W101 */
 /**
@@ -3047,6 +3132,7 @@ function bind(self, fn) {
 
 function toJsonReplacer(key, value) {
   var val = value;
+>>>>>>> master
 
   if (typeof key === 'string' && key.charAt(0) === '$' && key.charAt(1) === '$') {
     val = undefined;
@@ -3061,6 +3147,10 @@ function toJsonReplacer(key, value) {
   return val;
 }
 
+<<<<<<< HEAD
+},{}],8:[function(require,module,exports){
+'use strict';
+=======
 
 /**
  * @ngdoc function
@@ -3084,6 +3174,7 @@ function toJson(obj, pretty) {
   }
   return JSON.stringify(obj, toJsonReplacer, pretty);
 }
+>>>>>>> master
 
 
 /**
@@ -3125,7 +3216,12 @@ function startingTag(element) {
     return lowercase(elemHtml);
   }
 
+<<<<<<< HEAD
+},{}],9:[function(require,module,exports){
+'use strict';
+=======
 }
+>>>>>>> master
 
 
 /////////////////////////////////////////////////
@@ -3320,6 +3416,10 @@ function getNgAttribute(element, ngAttr) {
        <div ng-controller="BadController">
            I can add: {{a}} + {{b}} =  {{ a+b }}
 
+<<<<<<< HEAD
+},{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],10:[function(require,module,exports){
+'use strict';
+=======
            <p>The controller could not be instantiated, due to relying
               on automatic function annotations (which are disabled in
               strict mode). As such, the content of this section is not
@@ -3374,6 +3474,7 @@ function angularInit(element, bootstrap) {
   var appElement,
       module,
       config = {};
+>>>>>>> master
 
   // The element `element` has priority over any other element
   forEach(ngAttrPrefixes, function(prefix) {
@@ -3734,9 +3835,19 @@ function setupModuleLoader(window) {
   // We need to expose `angular.$$minErr` to modules such as `ngResource` that reference it during bootstrap
   angular.$$minErr = angular.$$minErr || minErr;
 
+<<<<<<< HEAD
+},{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],11:[function(require,module,exports){
+/**
+ * @license AngularJS v1.3.15
+ * (c) 2010-2014 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, angular, undefined) {'use strict';
+=======
   return ensure(angular, 'module', function() {
     /** @type {Object.<string, angular.Module>} */
     var modules = {};
+>>>>>>> master
 
     /**
      * @ngdoc function
@@ -4030,8 +4141,18 @@ function setupModuleLoader(window) {
 
 /* global: toDebugString: true */
 
+<<<<<<< HEAD
+},{}],12:[function(require,module,exports){
+/**
+ * @license AngularJS v1.3.15
+ * (c) 2010-2014 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, angular, undefined) {'use strict';
+=======
 function serializeObject(obj) {
   var seen = [];
+>>>>>>> master
 
   return JSON.stringify(obj, function(key, val) {
     val = toJsonReplacer(key, val);
@@ -4767,6 +4888,15 @@ function jqLiteRemove(element, keepData) {
 }
 
 
+<<<<<<< HEAD
+},{}],13:[function(require,module,exports){
+/**
+ * @license AngularJS v1.3.15
+ * (c) 2010-2014 Google, Inc. http://angularjs.org
+ * License: MIT
+ */
+(function(window, document, undefined) {'use strict';
+=======
 function jqLiteDocumentLoaded(action, win) {
   win = win || window;
   if (win.document.readyState === 'complete') {
@@ -4779,6 +4909,7 @@ function jqLiteDocumentLoaded(action, win) {
     jqLite(win).on('load', action);
   }
 }
+>>>>>>> master
 
 //////////////////////////////////////////
 // Functions which are declared directly.
@@ -30323,8 +30454,12 @@ var minlengthDirective = function() {
 })();
 
 
+<<<<<<< HEAD
+},{}],14:[function(require,module,exports){
+=======
 }).call(this,require("buffer").Buffer)
 },{"buffer":19}],17:[function(require,module,exports){
+>>>>>>> master
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
@@ -39532,7 +39667,7 @@ return jQuery;
 }));
 
 
-},{}],18:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (global){
 /**
  * React v0.13.0
@@ -59071,7 +59206,7 @@ module.exports = warning;
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],19:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -60404,7 +60539,7 @@ function decodeUtf8Char (str) {
   }
 }
 
-},{"base64-js":20,"ieee754":21,"is-array":22}],20:[function(require,module,exports){
+},{"base64-js":17,"ieee754":18,"is-array":19}],17:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -60530,7 +60665,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],21:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
       eLen = nBytes * 8 - mLen - 1,
@@ -60616,7 +60751,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128;
 };
 
-},{}],22:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 
 /**
  * isArray
@@ -60651,4 +60786,8 @@ module.exports = isArray || function (val) {
   return !! val && '[object Array]' == str.call(val);
 };
 
+<<<<<<< HEAD
+},{}]},{},[2,3,4,5,6,7,8,9,10]);
+=======
 },{}]},{},[1,2,3,4,5,6,7,8,9,10,11,12]);
+>>>>>>> master
