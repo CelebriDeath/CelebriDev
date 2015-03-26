@@ -77,6 +77,7 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('test', ['jshint:dev', 'simplemocha:all']);
+  grunt.registerTask('test-server', ['simplemocha:all']);
   grunt.registerTask('default', ['test']);
   grunt.registerTask('build', ['clean','browserify', 'copy']);
   grunt.registerTask('build:test', ['browserify:test']);
