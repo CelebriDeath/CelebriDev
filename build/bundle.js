@@ -2086,12 +2086,10 @@ module.exports = function (app) {
     app.controller('profilesMapController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', function ($rootScope, $scope, ApiService, $cookies, $location) {
 
         $scope.randomProfile = {};
-        alert('testing...');
         $scope.getAll = function () {
             ApiService.Profiles.get()
                 .success(function (data, status) {
                     $scope.allProfile = data;
-                    alert(data);
                     $scope.initMap();
                 })
                 .error(function (data) {
@@ -2099,37 +2097,46 @@ module.exports = function (app) {
                 });
         };
 
-        $scope.init = function () {
-            var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
-            $scope.randomProfile = $rootScope.profiles[randomIndex];
-            $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
-        };
 
         $scope.initMap = function () {
-            //var geoLocation = $scope.randomProfile.burialCoords.split(',');
-            //var mapProp = {
-            //    center:new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
-            //    zoom:8,
-            //    mapTypeId:google.maps.MapTypeId.ROADMAP
-            //};
-            //var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            //var marker = new google.maps.Marker({
-            //    position: mapProp.center,
-            //    map: map,
-            //    draggable:true,
-            //    animation: google.maps.Animation.DROP
-            //});
-            //google.maps.event.addListener(marker, 'click', toggleBounce);
-            //function toggleBounce() {
-            //
-            //    if (marker.getAnimation() != null) {
-            //        marker.setAnimation(null);
-            //    } else {
-            //        marker.setAnimation(google.maps.Animation.BOUNCE);
-            //    }
-            //}
+            var mapProp = {
+                center:new google.maps.LatLng(39.234416, -94.848398),
+                zoom:3,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            };
+            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+            var infowindow = new google.maps.InfoWindow();
+
+
+            var marker, i;
+
+            for (i = 0; i < $scope.allProfile.length; i++) {
+                var geoLocation = $scope.allProfile[i].burialCoords.split(',');
+                marker = new google.maps.Marker({
+                    position: new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
+                    map: map
+                });
+
+                google.maps.event.addListener(marker, 'click', (function(marker, i) {
+                    return function() {
+                        var currentPerson = $scope.allProfile[i];
+                        var contentString =
+                                '<h2>' + currentPerson.moniker + '</h2>' +
+                                '<h3>' + currentPerson.category1 + '</h3>' +
+                                '<p><a href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
+
+
+                        infowindow.setContent(contentString);
+                        infowindow.open(map, marker);
+                    }
+                })(marker, i));
+            }
+
 
         };
+
+
 
     }]);
 };

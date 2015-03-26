@@ -42,7 +42,7 @@ module.exports = function (app) {
                         var contentString =
                                 '<h2>' + currentPerson.moniker + '</h2>' +
                                 '<h3>' + currentPerson.category1 + '</h3>' +
-                                '<p><a data-ng-href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
+                                '<p><a href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
 
 
                         infowindow.setContent(contentString);
