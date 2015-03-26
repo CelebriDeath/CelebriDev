@@ -208,7 +208,6 @@ var DataEntry = React.createClass({
   render: function() {
     return (
       <main>
-        <CelebForm onNewCelebSubmit={this.onNewCeleb} url={this.props.celebsBaseUrl}/>
         <CelebList data={this.state.celebsData} />
       </main>
     )
@@ -252,4 +251,4 @@ var Browse = React.createClass({
   }
 });
 
-React.render(<DataEntry celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("data-entry"));
+React.render(<DataEntry celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("browse"));
