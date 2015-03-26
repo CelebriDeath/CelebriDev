@@ -1,4 +1,4 @@
-<section ngCloak data-ng-controller="individualProfileController" data-ng-init="init()">
+<section class="contentBox" ngCloak data-ng-controller="individualProfileController" data-ng-init="init()">
     <h1 class="moniker heading1">{{randomProfile.moniker}}</h1>
 
     <h2 class="category heading2">{{randomProfile.category1}}</h2>
@@ -7,20 +7,32 @@
     <img class="photoLink thumb"
          data-ng-src="{{randomProfile.photoLink}}">
 
-    <p class="bio clear">{{randomProfile.bio}}</p>
+    <div class="details">
 
-    <p><strong>Born:</strong> {{randomProfile.firstName}} {{randomProfile.middleName}} {{randomProfile.lastName}}
-    </p>
+      <p class="bio clear">{{randomProfile.bio}}</p>
 
-    <p><strong>Cause of death:</strong> {{randomProfile.howDied}}</p>
+      <p><strong>Born:</strong> {{randomProfile.firstName}} {{randomProfile.middleName}} {{randomProfile.lastName}}
+      </p>
 
-    <p><strong>Burial site details:</strong>
+      <p><strong>Cause of death:</strong> {{randomProfile.howDied}}</p>
 
-    <p>{{randomProfile.burialFacility}}</p>
+      <p><strong>Burial site details:</strong>
 
-    <p>{{randomProfile.burialAddy}}</p>
+      <p>{{randomProfile.burialFacility}}</p>
 
-    <p>{{randomProfile.burialCity}}, {{randomProfile.burialState}}. {{randomProfile.burialZIP}}</p>
-    <div data-google-map-directive></div>
+      <p>{{randomProfile.burialAddy}}</p>
+
+      <p>{{randomProfile.burialCity}}, {{randomProfile.burialState}}. {{randomProfile.burialZIP}}</p>
+      <!-- <div class="location" data-google-map-directive></div> -->
+    </div>
+
+    <section class="mapBox cf clear">
+      <div class="split floatLeft">
+        <h1 class="heading2 caption">View on Map</h1>
+      </div>
+      <div class="split floatRight">
+        <div data-google-map-directive></div>
+      </div>
+    </section>
 
 </section>

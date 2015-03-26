@@ -1,5 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>CelebriDeath</title>
   <link rel="stylesheet" type="text/css" href="css/base.css">
   <link rel="stylesheet" type="text/css" href="css/module.css">
@@ -18,8 +20,17 @@
     </nav>
   </header>
   <main class="contain">
-    <section class="profile">
-      <h1 class="moniker heading1">Marilyn Monroe</h1>
+    <section class="profile" data-ng-app="CelebriDeath">
+      <div data-full-profile-directive></div>
+      <section class="mapBox cf clear">
+        <div class="split floatLeft">
+          <h1 class="heading2 caption">View on Map</h1>
+        </div>
+        <div class="split floatRight">
+          <div data-google-map-directive></div>
+        </div>
+      </section>
+      <!-- <h1 class="moniker heading1">Marilyn Monroe</h1>
       <h2 class="category heading2">Actor</h2>
       <p class="dates">06/01/1926 - 08/05/1962. (Age 36)</p>
       <img class="photoLink thumb" src="http://upload.wikimedia.org/wikipedia/commons/thumb/2/27/Marilyn_Monroe_-_publicity.JPG/220px-Marilyn_Monroe_-_publicity.JPG">
@@ -30,7 +41,7 @@
         <p><strong>Burial site details:</strong><p>Westwood Village Memorial Park Cemetery</p><p>1218 Glendon Avenue</p><p>Los Angeles, CA. 90024</p>
       </div>
       <div class="location"><img src="img/site/grave.jpg"></div>
-      </div>
+      </div> -->
     </section>
     <footer class="footer contain cf">
       <div class="floatLeft">
@@ -44,5 +55,8 @@
       </ul>
     </footer>
   </main>
+  <script src="http://maps.googleapis.com/maps/api/js"></script>
+  <script src='vendors/lodash.js'></script>
+  <script src="bundle.js"></script>
 </body>
 </html>
