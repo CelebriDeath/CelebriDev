@@ -23,7 +23,6 @@ module.exports = function (app) {
         //};
 
         $scope.search = function (input) {
-            alert(input);
             $scope.filteredProfile = $scope.allProfile.filter(function (item) {
                 return item.moniker.indexOf(input) > -1;
             });
