@@ -87,74 +87,7 @@ var CelebForm = React.createClass({
     return (
 
       <form onSubmit={this.profileSubmit}>
-        <h3>Data Entry Instructions</h3>
-        <h4>1. Most data can be pulled from Wikipedia and www.findagrave.com; do not worry about giving citations.</h4>
-        <h4>2. For the coordinates, look for them inside the link on Google Maps. Will look something like the example below.</h4>
-        <h4>3. THANKS! Every little bit helps. We can edit later.</h4>
-        <p><label htmlFor="new-moniker"></label>
-        <input id="new-moniker" type="text" value={this.state.newCeleb.moniker} onChange={this.profileChange} name="new-moniker" /> Moniker: (Marilyn Monroe)</p>
-
-        <p><label htmlFor="new-category1"></label>
-        <input id="new-category1" type="text" value={this.state.newCeleb.category1} onChange={this.profileChange} name="new-category1" /> Category 1: (Actor)</p>
-
-        <p><label htmlFor="new-category2"></label>
-        <input id="new-category2" type="text" value={this.state.newCeleb.category2} onChange={this.profileChange} name="new-category2" /> Category 2: (Model)</p>
-
-        <p><label htmlFor="new-category3"></label>
-        <input id="new-category3" type="text" value={this.state.newCeleb.category3} onChange={this.profileChange} name="new-category3" /> Category 3: (Wife of Joe DiMaggio and Arthur Miller)</p>
-
-        <p><label htmlFor="new-lastName"></label>
-        <input id="new-lastName" type="text" value={this.state.newCeleb.lastName} onChange={this.profileChange} name="new-lastName" /> Last Name: (Baker)</p>
-
-        <p><label htmlFor="new-firstName"></label>
-        <input id="new-firstName" type="text" value={this.state.newCeleb.firstName} onChange={this.profileChange} name="new-firstName" /> First Name: (Norma)</p>
-
-        <p><label htmlFor="new-middleName"></label>
-        <input id="new-middleName" type="text" value={this.state.newCeleb.middleName} onChange={this.profileChange} name="new-middleName" /> Middle Name: (Jeane)</p>
-
-        <p><label htmlFor="new-suffix"></label>
-        <input id="new-suffix" type="text" value={this.state.newCeleb.suffix} onChange={this.profileChange} name="new-suffix" /> Suffix: ( )</p>
-
-        <p><label htmlFor="new-birth"></label>
-        <input id="new-birth" type="text" value={this.state.newCeleb.birth} onChange={this.profileChange} name="new-birth" /> Birth: (19260601) YYYYMMDD</p>
-
-        <p><label htmlFor="new-death"></label>
-        <input id="new-death" type="text" value={this.state.newCeleb.death} onChange={this.profileChange} name="new-death" /> Death: (19620805) YYYYMMDD</p>
-
-        <p><label htmlFor="new-howDied"></label>
-        <input id="new-howDied" type="text" value={this.state.newCeleb.howDied} onChange={this.profileChange} name="new-howDied" /> How Died: (Overdose)</p>
-
-        <p><label htmlFor="new-age"></label>
-        <input id="new-age" type="text" value={this.state.newCeleb.age} onChange={this.profileChange} name="new-age" /> Age: (36)</p>
-
-        <p><label htmlFor="new-death"></label>
-        <input id="new-bio" type="text" value={this.state.newCeleb.bio} onChange={this.profileChange} name="new-bio" /> Bio: (Just cut and paste the first paragraph of Wikipedia for now)</p>
-
-        <p><label htmlFor="new-photoLink"></label>
-        <input id="new-photoLink" type="text" value={this.state.newCeleb.photoLink} onChange={this.profileChange} name="new-photoLink" />  Photo Link: ("right-click on the image to get its link")</p>
-
-        <p><label htmlFor="new-burialCoords"></label>
-        <input id="new-burialCoords" type="text" value={this.state.newCeleb.burialCoords} onChange={this.profileChange} name="new-burialCoords" /> Grave - Coordinates: (34.05847, -118.43979)</p>
-
-        <p><label htmlFor="new-burialAddy"></label>
-        <input id="new-burialAddy" type="text" value={this.state.newCeleb.burialAddy} onChange={this.profileChange} name="new-burialAddy" /> Grave - Address: (1218 Glendon Avenue)</p>
-
-        <p><label htmlFor="new-burialCity"></label>
-        <input id="new-burialCity" type="text" value={this.state.newCeleb.burialCity} onChange={this.profileChange} name="new-burialCity" /> Grave - City: (Los Angeles)</p>
-
-        <p><label htmlFor="new-burialState"></label>
-        <input id="new-burialState" type="text" value={this.state.newCeleb.burialState} onChange={this.profileChange} name="new-burialState" /> Grave - State: (CA)</p>
-
-        <p><label htmlFor="new-burialZIP"></label>
-        <input id="new-burialZIP" type="text" value={this.state.newCeleb.burialZIP} onChange={this.profileChange} name="new-burialZIP" /> Grave - ZIP: (90024)</p>
-
-        <p><label htmlFor="new-burialCountry"></label>
-        <input id="new-burialCountry" type="text" value={this.state.newCeleb.burialCountry} onChange={this.profileChange} name="new-burialCountry" /> Grave - Country: (USA)</p>
-
-        <p><label htmlFor="new-burialFacility"></label>
-        <input id="new-burialFacility" type="text" value={this.state.newCeleb.burialFacility} onChange={this.profileChange} name="new-burialFacility" /> Grave - Facility: (Westwood Village Memorial Park Cemetery)</p>
-
-        <button type="submit">Create New Celebrity</button>
+        <h3>Stuff</h3>
       </form>
     )
   }
@@ -168,7 +101,7 @@ var CelebList = React.createClass({
     });
     return (
       <section>
-        <h1>Dead Celebrities Already Entered:</h1>
+        <h1 class="titleFont">List of All Celebrities in Database:</h1>
         <ul>
           {celebs}
         </ul>
@@ -207,7 +140,7 @@ var DataEntry = React.createClass({
 
   render: function() {
     return (
-      <main>
+      <main class="contain cf">
         <CelebList data={this.state.celebsData} />
       </main>
     )
@@ -244,7 +177,7 @@ var Browse = React.createClass({
 
   render: function() {
     return (
-      <main>
+      <main class="contain cf">
         <CelebList data={this.state.celebsData} />
       </main>
     )
