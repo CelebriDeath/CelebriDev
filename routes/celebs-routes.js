@@ -15,7 +15,7 @@ module.exports = function(app) {
 
   app.get('/celebs/:id', function(req, res) {
     Celeb.findOne({_id: req.params.id}, function(err, data) {
-      if (err) return res.status(500).send({'msg': 'could not retrieve celebs'});
+      if (err) return res.status(500).send({'msg': 'could not retrieve celeb'});
 
       res.json(data);
     });
