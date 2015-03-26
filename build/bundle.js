@@ -2000,7 +2000,7 @@ require('./constants/constants')(CelebriDeath);
 //controllers
 require('./profiles/controllers/random-profile-controller')(CelebriDeath);
 require('./profiles/controllers/individual-profile-controller')(CelebriDeath);
-require('./profiles/controllers/profiles-map-controller')(CelebriDeath);
+require('./maps/controllers/profiles-map-controller')(CelebriDeath);
 
 
 //directives
@@ -2027,7 +2027,7 @@ CelebriDeath.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-},{"./../../../bower_components/angular-cookies/angular-cookies.js":14,"./../../../bower_components/angular-route/angular-route.js":15,"./../../../bower_components/angular/angular":16,"./constants/constants":3,"./profiles/controllers/individual-profile-controller":5,"./profiles/controllers/profiles-map-controller":6,"./profiles/controllers/random-profile-controller":7,"./profiles/directives/google-map-directive":9,"./services/api-service":11}],3:[function(require,module,exports){
+},{"./../../../bower_components/angular-cookies/angular-cookies.js":14,"./../../../bower_components/angular-route/angular-route.js":15,"./../../../bower_components/angular/angular":16,"./constants/constants":3,"./maps/controllers/profiles-map-controller":4,"./profiles/controllers/individual-profile-controller":6,"./profiles/controllers/random-profile-controller":7,"./profiles/directives/google-map-directive":9,"./services/api-service":11}],3:[function(require,module,exports){
 'use strict';
 var Chance = require('chance'),
     chance = new Chance();
@@ -2083,6 +2083,62 @@ function getRandomProfile () {
 'use strict';
 
 module.exports = function (app) {
+    app.controller('profilesMapController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', function ($rootScope, $scope, ApiService, $cookies, $location) {
+
+        $scope.randomProfile = {};
+        alert('testing...');
+        $scope.getAll = function () {
+            ApiService.Profiles.get()
+                .success(function (data, status) {
+                    $scope.allProfile = data;
+                    alert(data);
+                    $scope.initMap();
+                })
+                .error(function (data) {
+                    $location.path('/');
+                });
+        };
+
+        $scope.init = function () {
+            var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
+            $scope.randomProfile = $rootScope.profiles[randomIndex];
+            $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
+        };
+
+        $scope.initMap = function () {
+            //var geoLocation = $scope.randomProfile.burialCoords.split(',');
+            //var mapProp = {
+            //    center:new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
+            //    zoom:8,
+            //    mapTypeId:google.maps.MapTypeId.ROADMAP
+            //};
+            //var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            //var marker = new google.maps.Marker({
+            //    position: mapProp.center,
+            //    map: map,
+            //    draggable:true,
+            //    animation: google.maps.Animation.DROP
+            //});
+            //google.maps.event.addListener(marker, 'click', toggleBounce);
+            //function toggleBounce() {
+            //
+            //    if (marker.getAnimation() != null) {
+            //        marker.setAnimation(null);
+            //    } else {
+            //        marker.setAnimation(google.maps.Animation.BOUNCE);
+            //    }
+            //}
+
+        };
+
+    }]);
+};
+
+
+},{}],5:[function(require,module,exports){
+'use strict';
+
+module.exports = function (app) {
     app.controller('googleMapController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', '$routeParams', 'profileData', function ($rootScope, $scope, ApiService, $cookies, $location, $routeParams, profileData) {
 
 
@@ -2118,7 +2174,7 @@ module.exports = function (app) {
 
 
 
-},{}],5:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 module.exports = function (app) {
@@ -2162,62 +2218,6 @@ module.exports = function (app) {
 
         };
 
-
-    }]);
-};
-
-
-},{}],6:[function(require,module,exports){
-'use strict';
-
-module.exports = function (app) {
-    app.controller('profilesMapController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', function ($rootScope, $scope, ApiService, $cookies, $location) {
-
-        $scope.randomProfile = {};
-
-        $scope.getRandom = function () {
-            ApiService.Profiles.get()
-                .success(function (data, status) {
-                    $scope.allProfile = data;
-                    console.log(data);
-                    $scope.initMap();
-                })
-                .error(function (data) {
-                    $location.path('/');
-                });
-        };
-
-        $scope.init = function () {
-            var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
-            $scope.randomProfile = $rootScope.profiles[randomIndex];
-            $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
-        };
-
-        $scope.initMap = function () {
-            //var geoLocation = $scope.randomProfile.burialCoords.split(',');
-            //var mapProp = {
-            //    center:new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
-            //    zoom:8,
-            //    mapTypeId:google.maps.MapTypeId.ROADMAP
-            //};
-            //var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            //var marker = new google.maps.Marker({
-            //    position: mapProp.center,
-            //    map: map,
-            //    draggable:true,
-            //    animation: google.maps.Animation.DROP
-            //});
-            //google.maps.event.addListener(marker, 'click', toggleBounce);
-            //function toggleBounce() {
-            //
-            //    if (marker.getAnimation() != null) {
-            //        marker.setAnimation(null);
-            //    } else {
-            //        marker.setAnimation(google.maps.Animation.BOUNCE);
-            //    }
-            //}
-
-        };
 
     }]);
 };

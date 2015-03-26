@@ -15,7 +15,7 @@ require('./constants/constants')(CelebriDeath);
 //controllers
 require('./profiles/controllers/random-profile-controller')(CelebriDeath);
 require('./profiles/controllers/individual-profile-controller')(CelebriDeath);
-require('./profiles/controllers/profiles-map-controller')(CelebriDeath);
+require('./maps/controllers/profiles-map-controller')(CelebriDeath);
 
 
 //directives
