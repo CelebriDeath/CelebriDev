@@ -1982,7 +1982,7 @@
 })();
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":19}],2:[function(require,module,exports){
+},{"buffer":16}],2:[function(require,module,exports){
 'use strict';
 
 require("./../../../bower_components/angular/angular");
@@ -2027,7 +2027,7 @@ CelebriDeath.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-},{"./../../../bower_components/angular-cookies/angular-cookies.js":14,"./../../../bower_components/angular-route/angular-route.js":15,"./../../../bower_components/angular/angular":16,"./constants/constants":3,"./maps/controllers/profiles-map-controller":4,"./profiles/controllers/individual-profile-controller":6,"./profiles/controllers/random-profile-controller":7,"./profiles/directives/google-map-directive":9,"./services/api-service":11}],3:[function(require,module,exports){
+},{"./../../../bower_components/angular-cookies/angular-cookies.js":11,"./../../../bower_components/angular-route/angular-route.js":12,"./../../../bower_components/angular/angular":13,"./constants/constants":3,"./maps/controllers/profiles-map-controller":4,"./profiles/controllers/individual-profile-controller":5,"./profiles/controllers/random-profile-controller":6,"./profiles/directives/google-map-directive":7,"./services/api-service":8}],3:[function(require,module,exports){
 'use strict';
 var Chance = require('chance'),
     chance = new Chance();
@@ -2090,6 +2090,7 @@ module.exports = function (app) {
             ApiService.Profiles.get()
                 .success(function (data, status) {
                     $scope.allProfile = data;
+                    $scope.filteredProfile = $scope.allProfile;
                     $scope.initMap();
                 })
                 .error(function (data) {
@@ -2097,6 +2098,21 @@ module.exports = function (app) {
                 });
         };
 
+        //$scope.showAll = function () {
+        //    $scope.filteredProfile = $scope.allProfile;
+        //    alert($scope.filteredProfile);
+        //    $scope.initMap();
+        //};
+
+        $scope.search = function (input) {
+            alert(input);
+            $scope.filteredProfile = $scope.allProfile.filter(function (item) {
+                return item.moniker.indexOf(input) > -1;
+            });
+
+            $scope.initMap();
+            $scope.filteredProfile = $scope.allProfile;
+        };
 
         $scope.initMap = function () {
             var mapProp = {
@@ -2111,8 +2127,8 @@ module.exports = function (app) {
 
             var marker, i;
 
-            for (i = 0; i < $scope.allProfile.length; i++) {
-                var geoLocation = $scope.allProfile[i].burialCoords.split(',');
+            for (i = 0; i < $scope.filteredProfile.length; i++) {
+                var geoLocation = $scope.filteredProfile[i].burialCoords.split(',');
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
                     map: map
@@ -2120,7 +2136,7 @@ module.exports = function (app) {
 
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        var currentPerson = $scope.allProfile[i];
+                        var currentPerson = $scope.filteredProfile[i];
                         var contentString =
                                 '<h2>' + currentPerson.moniker + '</h2>' +
                                 '<h3>' + currentPerson.category1 + '</h3>' +
@@ -2143,45 +2159,6 @@ module.exports = function (app) {
 
 
 },{}],5:[function(require,module,exports){
-'use strict';
-
-module.exports = function (app) {
-    app.controller('googleMapController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', '$routeParams', 'profileData', function ($rootScope, $scope, ApiService, $cookies, $location, $routeParams, profileData) {
-
-
-        $scope.initMap = function () {
-            var geoLocation = $scope.randomProfile.burialCoords.split(',');
-            var mapProp = {
-                center:new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
-                zoom:8,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            var marker = new google.maps.Marker({
-                position: mapProp.center,
-                map: map,
-                draggable:true,
-                animation: google.maps.Animation.DROP,
-                title: 'Hello World!'
-            });
-            google.maps.event.addListener(marker, 'click', toggleBounce);
-            function toggleBounce() {
-
-                if (marker.getAnimation() != null) {
-                    marker.setAnimation(null);
-                } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
-            }
-
-        };
-        google.maps.event.addDomListener(window, 'load', $scope.initMap);
-    }]);
-};
-
-
-
-},{}],6:[function(require,module,exports){
 'use strict';
 
 module.exports = function (app) {
@@ -2230,7 +2207,7 @@ module.exports = function (app) {
 };
 
 
-},{}],7:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 'use strict';
 
 module.exports = function (app) {
@@ -2285,21 +2262,7 @@ module.exports = function (app) {
 };
 
 
-},{}],8:[function(require,module,exports){
-'use strict';
-
-module.exports = function(app) {
-    app.directive('fullProfileDirective', function() {
-        return {
-            restrict: 'A',
-            templateUrl: './angular/templates/profiles/directives/full_profile_directive.html',
-            replace: true
-        }
-    });
-};
-
-
-},{}],9:[function(require,module,exports){
+},{}],7:[function(require,module,exports){
 'use strict';
 
 module.exports = function(app) {
@@ -2313,21 +2276,7 @@ module.exports = function(app) {
 };
 
 
-},{}],10:[function(require,module,exports){
-'use strict';
-
-module.exports = function(app) {
-    app.directive('randomProfileDirective', function() {
-        return {
-            restrict: 'A',
-            templateUrl: '../../../templates/profiles/random_profile_directive.html',
-            replace: true
-        }
-    });
-};
-
-
-},{}],11:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 module.exports = function (app) {
@@ -2363,7 +2312,7 @@ module.exports = function (app) {
         }]);
 };
 
-},{}],12:[function(require,module,exports){
+},{}],9:[function(require,module,exports){
 'use strict';
 
 var React = require("./../../../bower_components/react/react.js");
@@ -2553,7 +2502,7 @@ var Browse = React.createClass({displayName: "Browse",
 React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("browse"));
 
 
-},{"./../../../bower_components/jquery/dist/jquery.js":17,"./../../../bower_components/react/react.js":18}],13:[function(require,module,exports){
+},{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],10:[function(require,module,exports){
 'use strict';
 
 var React = require("./../../../bower_components/react/react.js");
@@ -2811,7 +2760,7 @@ var Browse = React.createClass({displayName: "Browse",
 React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("data-entry"));
 
 
-},{"./../../../bower_components/jquery/dist/jquery.js":17,"./../../../bower_components/react/react.js":18}],14:[function(require,module,exports){
+},{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],11:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -3020,7 +2969,7 @@ angular.module('ngCookies', ['ng']).
 })(window, window.angular);
 
 
-},{}],15:[function(require,module,exports){
+},{}],12:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -4012,7 +3961,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 })(window, window.angular);
 
 
-},{}],16:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -30323,7 +30272,7 @@ var minlengthDirective = function() {
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
 
-},{}],17:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
@@ -39531,7 +39480,7 @@ return jQuery;
 }));
 
 
-},{}],18:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (global){
 /**
  * React v0.13.1
@@ -59076,7 +59025,7 @@ module.exports = warning;
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],19:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -60409,7 +60358,7 @@ function decodeUtf8Char (str) {
   }
 }
 
-},{"base64-js":20,"ieee754":21,"is-array":22}],20:[function(require,module,exports){
+},{"base64-js":17,"ieee754":18,"is-array":19}],17:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -60535,7 +60484,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],21:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
       eLen = nBytes * 8 - mLen - 1,
@@ -60621,7 +60570,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128;
 };
 
-},{}],22:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 
 /**
  * isArray
@@ -60656,4 +60605,4 @@ module.exports = isArray || function (val) {
   return !! val && '[object Array]' == str.call(val);
 };
 
-},{}]},{},[2,3,4,5,6,7,8,9,10,11,12,13]);
+},{}]},{},[2,3,4,5,6,7,8,9,10]);

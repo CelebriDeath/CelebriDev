@@ -8,6 +8,7 @@ module.exports = function (app) {
             ApiService.Profiles.get()
                 .success(function (data, status) {
                     $scope.allProfile = data;
+                    $scope.filteredProfile = $scope.allProfile;
                     $scope.initMap();
                 })
                 .error(function (data) {
@@ -15,6 +16,21 @@ module.exports = function (app) {
                 });
         };
 
+        //$scope.showAll = function () {
+        //    $scope.filteredProfile = $scope.allProfile;
+        //    alert($scope.filteredProfile);
+        //    $scope.initMap();
+        //};
+
+        $scope.search = function (input) {
+            alert(input);
+            $scope.filteredProfile = $scope.allProfile.filter(function (item) {
+                return item.moniker.indexOf(input) > -1;
+            });
+
+            $scope.initMap();
+            $scope.filteredProfile = $scope.allProfile;
+        };
 
         $scope.initMap = function () {
             var mapProp = {
@@ -29,8 +45,8 @@ module.exports = function (app) {
 
             var marker, i;
 
-            for (i = 0; i < $scope.allProfile.length; i++) {
-                var geoLocation = $scope.allProfile[i].burialCoords.split(',');
+            for (i = 0; i < $scope.filteredProfile.length; i++) {
+                var geoLocation = $scope.filteredProfile[i].burialCoords.split(',');
                 marker = new google.maps.Marker({
                     position: new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
                     map: map
@@ -38,7 +54,7 @@ module.exports = function (app) {
 
                 google.maps.event.addListener(marker, 'click', (function(marker, i) {
                     return function() {
-                        var currentPerson = $scope.allProfile[i];
+                        var currentPerson = $scope.filteredProfile[i];
                         var contentString =
                                 '<h2>' + currentPerson.moniker + '</h2>' +
                                 '<h3>' + currentPerson.category1 + '</h3>' +
