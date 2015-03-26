@@ -56,6 +56,7 @@ p, h1, h2, li {
 }
 
 .tagLine {
+  font-size: 4em;
   display: inline-block;
   color: white;
   position: absolute;
@@ -66,10 +67,11 @@ p, h1, h2, li {
 }
 
 .tagQuote {
+  font-size: 3em;
   display: inline-block;
   color: white;
   position: absolute;
-  top: 50%;
+  top: 55%;
   left: 0;
   width: 100%;
   text-align: center;
@@ -134,7 +136,7 @@ p, h1, h2, li {
 
 
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 62em) {
 
   p, h1, h2, li {
     font-size: 2em;
@@ -155,6 +157,15 @@ p, h1, h2, li {
 
   .heading3 {
     font-size: 2em;
+  }
+
+  .tagLine {
+    font-size: 2em;
+  }
+
+  .tagQuote {
+    font-size: 1em;
+    top: 50%;
   }
 
   .thumb {

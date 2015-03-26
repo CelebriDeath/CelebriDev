@@ -8,6 +8,10 @@
   float: right;
 }
 
+.marginBottom {
+  margin-bottom: 2em;
+}
+
 .footer {
   clear: both;
 }
@@ -82,7 +86,7 @@
   width: 90%;
 }
 
-@media screen and (min-width: 60em) {
+@media screen and (min-width: 62em) {
 
   .siteNav li {
     font-size: 2em;
