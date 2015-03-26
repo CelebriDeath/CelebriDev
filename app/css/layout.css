@@ -115,7 +115,11 @@
 
   .team {
     float: left;
-    width: 15%;
+    width: 22%;
+  }
+
+  .headshot {
+    width: 50%;
   }
 
   .details {
