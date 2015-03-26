@@ -7,6 +7,11 @@ p, h1, h2, li {
   background-color: #fefefe;
 }
 
+.mapBox {
+  padding: 1em;
+  background-color: #1e1e1e;
+}
+
 .header {
   background-color: #1e1e1e;
   padding: 1em 0;
@@ -34,6 +39,13 @@ p, h1, h2, li {
 .heading3 {
   color: #ccb20a;
   font-size: 5em;
+}
+
+.caption {
+  margin: 4.6em;
+  padding: 2em;
+  border-top: 2px solid #ccb20a;
+  border-bottom: 2px solid #ccb20a;
 }
 
 .headingBack {
@@ -107,7 +119,7 @@ p, h1, h2, li {
 }
 
 .location {
-  width: 100%;
+
   clear: both;
 }
 
@@ -149,7 +161,7 @@ p, h1, h2, li {
   }
 
   .location {
-    width: 40%;
+
   }
 
   .dates {
@@ -163,6 +175,11 @@ p, h1, h2, li {
     justify-content: space-between;
     align-content: space-between;
     align-items: flex-start;
+  }
+
+  .split {
+    width: 50%;
+    text-align: center;
   }
 
 }
@@ -223,7 +240,7 @@ p, h1, h2, li {
 
 
   .location {
-    width: 25%;
+
   }
 
   .button {

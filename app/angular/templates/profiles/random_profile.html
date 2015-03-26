@@ -1,12 +1,25 @@
 <section ngCloak data-ng-controller="randomProfileController" data-ng-init="getRandom()">
     <!--<button data-ng-click="random()">Random Profile</button>-->
-    <h1 class="moniker heading1">{{randomProfile.moniker}}</h1>
+    <div class="backdrop">
+      <img src="img/site/redcarpet1.jpg">
+      <h2 class="tagLine">Some text here.</h2>
+    </div>
+    <section class="contentBox cf">
 
-    <img class="photoLink thumb"
+    <h1 class="heading2">Featured Profile</h1>
+    <div class="preview cf">
+    <img class="thumb"
          data-ng-src="{{randomProfile.photoLink}}">
 
-    <p class="bio clear">{{randomProfile.bio}}</p>
+    <h1 class="moniker heading1">{{randomProfile.moniker}}</h1>
 
-    <div data-google-map-directive></div>
+
+    <p class="">{{randomProfile.bio}}</p>
+
+    <div class="location">
+      <div data-google-map-directive></div>
+    </div>
     <a class="button previewButton" data-ng-href="/#/profiles/{{randomIndex}}">View full profile</a>
+  </div>
+  </section>
 </section>
