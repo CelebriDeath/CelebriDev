@@ -42,10 +42,7 @@ p, h1, h2, li {
 }
 
 .caption {
-  margin: 4.6em;
-  padding: 2em;
-  border-top: 2px solid #ccb20a;
-  border-bottom: 2px solid #ccb20a;
+  margin: 3em;
 }
 
 .headingBack {
@@ -68,6 +65,16 @@ p, h1, h2, li {
   text-align: center;
 }
 
+.tagQuote {
+  display: inline-block;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  text-align: center;
+}
+
 .thumb {
   float: left;
   width: 50%;
@@ -81,10 +88,6 @@ p, h1, h2, li {
 
 .profile {
   padding: 1em;
-}
-
-.bio {
-
 }
 
 .dates {
@@ -116,10 +119,12 @@ p, h1, h2, li {
 
 .headshot {
   width: 100%;
+  border-radius: 100%;
+  padding-bottom: .5em;
+
 }
 
 .location {
-
   clear: both;
 }
 
@@ -160,10 +165,6 @@ p, h1, h2, li {
     font-size: 1.6em;
   }
 
-  .location {
-
-  }
-
   .dates {
     font-size: 2em;
   }
@@ -172,8 +173,8 @@ p, h1, h2, li {
     display:flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    align-content: space-between;
+    justify-content: flex-start;
+    align-content: flex-start;
     align-items: flex-start;
   }
 
@@ -215,7 +216,6 @@ p, h1, h2, li {
     position: relative;
     top: 7em;
     left: 0;
-
   }
 
   .thumb {
@@ -238,11 +238,6 @@ p, h1, h2, li {
     background-size: cover;
   }
 
-
-  .location {
-
-  }
-
   .button {
     font-size: 1em;
   }
@@ -253,6 +248,13 @@ p, h1, h2, li {
 
   .grayBack {
   background-color: #efefef;
+  }
+
+  .caption {
+  margin: 4.6em;
+  padding: 2em;
+  border-top: 2px solid #ccb20a;
+  border-bottom: 2px solid #ccb20a;
   }
 
 }

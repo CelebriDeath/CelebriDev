@@ -1,27 +1,26 @@
-<section data-ng-controller="randomProfileController" data-ng-init="init()">
-    <button data-ng-click="random()"></button>
+<section ngCloak data-ng-controller="randomProfileController" data-ng-init="getRandom()">
+    <!--<button data-ng-click="random()">Random Profile</button>-->
+    <div class="backdrop">
+      <img src="img/site/redcarpet1.jpg">
+      <h2 class="tagLine">Some text here.</h2>
+    </div>
+    <section class="contentBox cf">
+
+    <h1 class="heading2">Featured Profile</h1>
+    <div class="preview cf">
+    <img class="thumb"
+         data-ng-src="{{randomProfile.photoLink}}">
+
     <h1 class="moniker heading1">{{randomProfile.moniker}}</h1>
 
-    <h2 class="category heading2">{{randomProfile.category1}}</h2>
 
-    <p class="dates">{{randomProfile.death}} - {{randomProfile.birth}}. ({{randomProfile.age}})</p>
-    <img class="photoLink thumb"
-         src="{{randomProfile.photoLink}}">
+    <p class="">{{randomProfile.bio}}</p>
 
-    <div class="details">
-    <p class="bio clear">{{randomProfile.bio}}</p>
-
-    <p><strong>Born:</strong> {{randomProfile.firstName}} {{randomProfile.middleName}} {{randomProfile.lastName}}</p>
-
-    <p><strong>Cause of death:</strong> {{randomProfile.howDied}}</p>
-
-    <p><strong>Burial site details:</strong>
-
-    <p>{{randomProfile.burialFacility}}</p>
-
-    <p>{{randomProfile.burialAddy}}</p>
-
-    <p>{{randomProfile.burialCity}}, {{randomProfile.burialState}}. {{randomProfile.burialZIP}}</p>
-</div>
+    <div class="location">
+      <div data-google-map-directive></div>
+    </div>
+    <a class="button previewButton" data-ng-href="/#/profiles/{{randomProfile._id}}">View full profile</a>
+  </div>
+  </section>
 
 </section>

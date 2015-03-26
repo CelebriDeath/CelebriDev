@@ -74,6 +74,10 @@
   width: 5.5em;
 }
 
+.teamBox {
+  padding: 2em;
+}
+
 .team {
   width: 90%;
 }
@@ -99,6 +103,10 @@
 
   .siteNav li{
     font-size: 1em;
+  }
+
+  .teamBox{
+    width: 100%;
   }
 
   .team {
