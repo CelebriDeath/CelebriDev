@@ -37,7 +37,7 @@ CelebriDeath.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 
-},{"./../../../bower_components/angular-cookies/angular-cookies.js":11,"./../../../bower_components/angular-route/angular-route.js":12,"./../../../bower_components/angular/angular":13,"./constants/constants":2,"./profiles/controllers/individual-profile-controller":4,"./profiles/controllers/random-profile-controller":5,"./profiles/directives/google-map-directive":7,"./services/api-service":9}],2:[function(require,module,exports){
+},{"./../../../bower_components/angular-cookies/angular-cookies.js":12,"./../../../bower_components/angular-route/angular-route.js":13,"./../../../bower_components/angular/angular":14,"./constants/constants":2,"./profiles/controllers/individual-profile-controller":4,"./profiles/controllers/random-profile-controller":5,"./profiles/directives/google-map-directive":7,"./services/api-service":9}],2:[function(require,module,exports){
 'use strict';
 var Chance = require("./../../../../bower_components/chance/chance.js"),
     chance = new Chance();
@@ -89,7 +89,7 @@ function getRandomProfile () {
     }
 }
 
-},{"./../../../../bower_components/chance/chance.js":14}],3:[function(require,module,exports){
+},{"./../../../../bower_components/chance/chance.js":15}],3:[function(require,module,exports){
 'use strict';
 
 module.exports = function (app) {
@@ -320,7 +320,264 @@ var ajax = require("./../../../bower_components/jquery/dist/jquery.js").ajax;
 var Celeb = React.createClass({displayName: "Celeb",
 
   render: function() {
-    return React.createElement("li", null, React.createElement("span", null, this.props.data.moniker + ' • '), React.createElement("span", null, this.props.data.category1 + ' • '), this.props.data.death)
+    return React.createElement("li", null, React.createElement("span", null, this.props.data.moniker + ' • '), React.createElement("span", null, this.props.data.category1 + ' • '), this.props.data.age)
+  }
+});
+
+var CelebForm = React.createClass({displayName: "CelebForm",
+
+  getInitialState: function() {
+    return {newCeleb: {moniker: '', category: '', deathDate: ''}};
+  },
+
+  profileChange: function(event) {
+    var stateCopy = this.state;
+    if (event.target.name === 'new-moniker')
+      stateCopy.newCeleb.moniker = event.target.value;
+    if (event.target.name === 'new-category1')
+      stateCopy.newCeleb.category1 = event.target.value;
+    if (event.target.name === 'new-category2')
+      stateCopy.newCeleb.category2 = event.target.value;
+    if (event.target.name === 'new-category3')
+      stateCopy.newCeleb.category3 = event.target.value;
+    if (event.target.name === 'new-lastName')
+      stateCopy.newCeleb.lastName = event.target.value;
+    if (event.target.name === 'new-firstName')
+      stateCopy.newCeleb.firstName = event.target.value;
+    if (event.target.name === 'new-middleName')
+      stateCopy.newCeleb.middleName = event.target.value;
+    if (event.target.name === 'new-suffix')
+      stateCopy.newCeleb.suffix = event.target.value;
+    if (event.target.name === 'new-birth')
+      stateCopy.newCeleb.birth = event.target.value;
+    if (event.target.name === 'new-death')
+      stateCopy.newCeleb.death = event.target.value;
+    if (event.target.name === 'new-age')
+      stateCopy.newCeleb.age = event.target.value;
+    if (event.target.name === 'new-bio')
+      stateCopy.newCeleb.bio = event.target.value;
+    if (event.target.name === 'new-photoLink')
+      stateCopy.newCeleb.photoLink = event.target.value;
+    if (event.target.name === 'new-burialCoords')
+      stateCopy.newCeleb.burialCoords = event.target.value;
+    if (event.target.name === 'new-burialAddy')
+      stateCopy.newCeleb.burialAddy = event.target.value;
+    if (event.target.name === 'new-burialCity')
+      stateCopy.newCeleb.burialCity = event.target.value;
+    if (event.target.name === 'new-burialState')
+      stateCopy.newCeleb.burialState = event.target.value;
+    if (event.target.name === 'new-burialZIP')
+      stateCopy.newCeleb.burialZIP = event.target.value;
+    if (event.target.name === 'new-burialCountry')
+      stateCopy.newCeleb.burialCountry = event.target.value;
+    if (event.target.name === 'new-burialFacility')
+      stateCopy.newCeleb.burialFacility = event.target.value;
+    if (event.target.name === 'new-howDied')
+      stateCopy.newCeleb.howDied = event.target.value;
+    this.setState(stateCopy);
+  },
+
+  profileSubmit: function(event) {
+    event.preventDefault();
+    console.log(this.state.newCeleb);
+    var newCeleb = this.state.newCeleb;
+    ajax({
+      url: this.props.url,
+      contentType: 'application/json',
+      type: 'POST',
+      data: JSON.stringify(newCeleb),
+      success: function(data) {
+        this.props.onNewCelebSubmit(data);
+        // the next line clears the form after hitting submit button
+        this.setState({newCeleb: {moniker: '', category: '', deathDate: ''}});
+      }.bind(this),
+      error: function(xhr, status, err) {
+        console.log(err);
+      }
+    });
+  },
+
+  render: function() {
+    return (
+
+      React.createElement("form", {onSubmit: this.profileSubmit}, 
+        React.createElement("h3", null, "Data Entry Instructions"), 
+        React.createElement("h4", null, "1. Most data can be pulled from Wikipedia and www.findagrave.com; do not worry about giving citations."), 
+        React.createElement("h4", null, "2. For the coordinates, look for them inside the link on Google Maps. Will look something like the example below."), 
+        React.createElement("h4", null, "3. THANKS! Every little bit helps. We can edit later."), 
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-moniker"}), 
+        React.createElement("input", {id: "new-moniker", type: "text", value: this.state.newCeleb.moniker, onChange: this.profileChange, name: "new-moniker"}), " Moniker: (Marilyn Monroe)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-category1"}), 
+        React.createElement("input", {id: "new-category1", type: "text", value: this.state.newCeleb.category1, onChange: this.profileChange, name: "new-category1"}), " Category 1: (Actor)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-category2"}), 
+        React.createElement("input", {id: "new-category2", type: "text", value: this.state.newCeleb.category2, onChange: this.profileChange, name: "new-category2"}), " Category 2: (Model)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-category3"}), 
+        React.createElement("input", {id: "new-category3", type: "text", value: this.state.newCeleb.category3, onChange: this.profileChange, name: "new-category3"}), " Category 3: (Wife of Joe DiMaggio and Arthur Miller)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-lastName"}), 
+        React.createElement("input", {id: "new-lastName", type: "text", value: this.state.newCeleb.lastName, onChange: this.profileChange, name: "new-lastName"}), " Last Name: (Baker)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-firstName"}), 
+        React.createElement("input", {id: "new-firstName", type: "text", value: this.state.newCeleb.firstName, onChange: this.profileChange, name: "new-firstName"}), " First Name: (Norma)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-middleName"}), 
+        React.createElement("input", {id: "new-middleName", type: "text", value: this.state.newCeleb.middleName, onChange: this.profileChange, name: "new-middleName"}), " Middle Name: (Jeane)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-suffix"}), 
+        React.createElement("input", {id: "new-suffix", type: "text", value: this.state.newCeleb.suffix, onChange: this.profileChange, name: "new-suffix"}), " Suffix: ( )"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-birth"}), 
+        React.createElement("input", {id: "new-birth", type: "text", value: this.state.newCeleb.birth, onChange: this.profileChange, name: "new-birth"}), " Birth: (19260601) YYYYMMDD"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-death"}), 
+        React.createElement("input", {id: "new-death", type: "text", value: this.state.newCeleb.death, onChange: this.profileChange, name: "new-death"}), " Death: (19620805) YYYYMMDD"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-howDied"}), 
+        React.createElement("input", {id: "new-howDied", type: "text", value: this.state.newCeleb.howDied, onChange: this.profileChange, name: "new-howDied"}), " How Died: (Overdose)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-age"}), 
+        React.createElement("input", {id: "new-age", type: "text", value: this.state.newCeleb.age, onChange: this.profileChange, name: "new-age"}), " Age: (36)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-death"}), 
+        React.createElement("input", {id: "new-bio", type: "text", value: this.state.newCeleb.bio, onChange: this.profileChange, name: "new-bio"}), " Bio: (Just cut and paste the first paragraph of Wikipedia for now)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-photoLink"}), 
+        React.createElement("input", {id: "new-photoLink", type: "text", value: this.state.newCeleb.photoLink, onChange: this.profileChange, name: "new-photoLink"}), "  Photo Link: (\"right-click on the image to get its link\")"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialCoords"}), 
+        React.createElement("input", {id: "new-burialCoords", type: "text", value: this.state.newCeleb.burialCoords, onChange: this.profileChange, name: "new-burialCoords"}), " Grave - Coordinates: (34.05847, -118.43979)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialAddy"}), 
+        React.createElement("input", {id: "new-burialAddy", type: "text", value: this.state.newCeleb.burialAddy, onChange: this.profileChange, name: "new-burialAddy"}), " Grave - Address: (1218 Glendon Avenue)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialCity"}), 
+        React.createElement("input", {id: "new-burialCity", type: "text", value: this.state.newCeleb.burialCity, onChange: this.profileChange, name: "new-burialCity"}), " Grave - City: (Los Angeles)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialState"}), 
+        React.createElement("input", {id: "new-burialState", type: "text", value: this.state.newCeleb.burialState, onChange: this.profileChange, name: "new-burialState"}), " Grave - State: (CA)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialZIP"}), 
+        React.createElement("input", {id: "new-burialZIP", type: "text", value: this.state.newCeleb.burialZIP, onChange: this.profileChange, name: "new-burialZIP"}), " Grave - ZIP: (90024)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialCountry"}), 
+        React.createElement("input", {id: "new-burialCountry", type: "text", value: this.state.newCeleb.burialCountry, onChange: this.profileChange, name: "new-burialCountry"}), " Grave - Country: (USA)"), 
+
+        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialFacility"}), 
+        React.createElement("input", {id: "new-burialFacility", type: "text", value: this.state.newCeleb.burialFacility, onChange: this.profileChange, name: "new-burialFacility"}), " Grave - Facility: (Westwood Village Memorial Park Cemetery)"), 
+
+        React.createElement("button", {type: "submit"}, "Create New Celebrity")
+      )
+    )
+  }
+});
+
+var CelebList = React.createClass({displayName: "CelebList",
+
+  render: function() {
+    var celebs = this.props.data.map(function(celeb) {
+      return React.createElement(Celeb, {data: celeb, key: celeb._id});
+    });
+    return (
+      React.createElement("section", null, 
+        React.createElement("h1", null, "Dead Celebrities Already Entered:"), 
+        React.createElement("ul", null, 
+          celebs
+        )
+      )
+    )
+  }
+});
+
+var DataEntry = React.createClass({displayName: "DataEntry",
+
+  getInitialState: function() {
+    return {celebsData: []};
+  },
+
+  onNewCeleb: function(celeb) {
+    celeb._id = this.state.celebsData.length + 1;
+    var stateCopy = this.state;
+    stateCopy.celebsData.push(celeb);
+    this.setState(stateCopy);
+  },
+
+  componentDidMount: function() {
+    ajax({
+      url: this.props.celebsBaseUrl,
+      dataType: 'json',
+      success: function(data) {
+        var state = this.state;
+        state.celebsData = data;
+        this.setState(state);
+      }.bind(this),
+      error: function(xhr, status) {
+        console.log(xhr, status);
+      }
+    });
+  },
+
+  render: function() {
+    return (
+      React.createElement("main", null, 
+        React.createElement(CelebList, {data: this.state.celebsData})
+      )
+    )
+  }
+});
+
+var Browse = React.createClass({displayName: "Browse",
+
+  getInitialState: function() {
+    return {celebsData: []};
+  },
+
+  onNewCeleb: function(celeb) {
+    celeb._id = this.state.celebsData.length + 1;
+    var stateCopy = this.state;
+    stateCopy.celebsData.push(celeb);
+    this.setState(stateCopy);
+  },
+
+  componentDidMount: function() {
+    ajax({
+      url: this.props.celebsBaseUrl,
+      dataType: 'json',
+      success: function(data) {
+        var state = this.state;
+        state.celebsData = data;
+        this.setState(state);
+      }.bind(this),
+      error: function(xhr, status) {
+        console.log(xhr, status);
+      }
+    });
+  },
+
+  render: function() {
+    return (
+      React.createElement("main", null, 
+        React.createElement(CelebList, {data: this.state.celebsData})
+      )
+    )
+  }
+});
+
+React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("browse"));
+
+
+},{"./../../../bower_components/jquery/dist/jquery.js":16,"./../../../bower_components/react/react.js":17}],11:[function(require,module,exports){
+'use strict';
+
+var React = require("./../../../bower_components/react/react.js");
+var ajax = require("./../../../bower_components/jquery/dist/jquery.js").ajax;
+
+var Celeb = React.createClass({displayName: "Celeb",
+
+  render: function() {
+    return React.createElement("li", null, React.createElement("span", null, this.props.data.moniker + ' • '), React.createElement("span", null, this.props.data.category1 + ' • '), this.props.data.age)
   }
 });
 
@@ -568,10 +825,8 @@ var Browse = React.createClass({displayName: "Browse",
 
 React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("data-entry"));
 
-React.render(React.createElement(Browse, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("browse"));
 
-
-},{"./../../../bower_components/jquery/dist/jquery.js":15,"./../../../bower_components/react/react.js":16}],11:[function(require,module,exports){
+},{"./../../../bower_components/jquery/dist/jquery.js":16,"./../../../bower_components/react/react.js":17}],12:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -780,7 +1035,7 @@ angular.module('ngCookies', ['ng']).
 })(window, window.angular);
 
 
-},{}],12:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -1772,7 +2027,7 @@ function ngViewFillContentFactory($compile, $controller, $route) {
 })(window, window.angular);
 
 
-},{}],13:[function(require,module,exports){
+},{}],14:[function(require,module,exports){
 /**
  * @license AngularJS v1.3.15
  * (c) 2010-2014 Google, Inc. http://angularjs.org
@@ -28083,7 +28338,7 @@ var minlengthDirective = function() {
 
 !window.angular.$$csp() && window.angular.element(document).find('head').prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}</style>');
 
-},{}],14:[function(require,module,exports){
+},{}],15:[function(require,module,exports){
 (function (Buffer){
 //  Chance.js 0.7.3
 //  http://chancejs.com
@@ -30068,7 +30323,7 @@ var minlengthDirective = function() {
 
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":17}],15:[function(require,module,exports){
+},{"buffer":18}],16:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.3
  * http://jquery.com/
@@ -39276,7 +39531,7 @@ return jQuery;
 }));
 
 
-},{}],16:[function(require,module,exports){
+},{}],17:[function(require,module,exports){
 (function (global){
 /**
  * React v0.13.0
@@ -58815,7 +59070,7 @@ module.exports = warning;
 });
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],17:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -60148,7 +60403,7 @@ function decodeUtf8Char (str) {
   }
 }
 
-},{"base64-js":18,"ieee754":19,"is-array":20}],18:[function(require,module,exports){
+},{"base64-js":19,"ieee754":20,"is-array":21}],19:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -60274,7 +60529,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
       eLen = nBytes * 8 - mLen - 1,
@@ -60360,7 +60615,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128;
 };
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 
 /**
  * isArray
@@ -60395,4 +60650,4 @@ module.exports = isArray || function (val) {
   return !! val && '[object Array]' == str.call(val);
 };
 
-},{}]},{},[1,2,3,4,5,6,7,8,9,10]);
+},{}]},{},[1,2,3,4,5,6,7,8,9,10,11]);
