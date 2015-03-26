@@ -21,6 +21,12 @@ module.exports = function (app) {
                 Profiles: {
                     get: function () {
                         return request(restUrl + '/celebs', 'GET');
+                    },
+                    getRandom: function () {
+                        return request(restUrl + '/celebs/random', 'GET');
+                    },
+                    getById: function (id) {
+                        return request(restUrl + '/celebs/' + id, 'GET');
                     }
                 }
             };
