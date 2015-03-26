@@ -3,12 +3,10 @@
 var React = require('react');
 var ajax = require('jquery').ajax;
 
-var celebsData = [{moniker: 'John F. Kennedy', category: 'politician', deathDate: 19631122, _id: 1}];
-
 var Celeb = React.createClass({
 
   render: function() {
-    return <li><span>{this.props.data.moniker + ' • '}</span><span>{this.props.data.category1 + ' • '}</span>{this.props.data.death}</li>
+    return <li><span>{this.props.data.moniker + ' • '}</span><span>{this.props.data.category1 + ' • '}</span>{this.props.data.age}</li>
   }
 });
 
@@ -179,7 +177,7 @@ var CelebList = React.createClass({
   }
 });
 
-var CelebsApp = React.createClass({
+var DataEntry = React.createClass({
 
   getInitialState: function() {
     return {celebsData: []};
@@ -217,4 +215,43 @@ var CelebsApp = React.createClass({
   }
 });
 
-React.render(<CelebsApp celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("data-entry"));
+var Browse = React.createClass({
+
+  getInitialState: function() {
+    return {celebsData: []};
+  },
+
+  onNewCeleb: function(celeb) {
+    celeb._id = this.state.celebsData.length + 1;
+    var stateCopy = this.state;
+    stateCopy.celebsData.push(celeb);
+    this.setState(stateCopy);
+  },
+
+  componentDidMount: function() {
+    ajax({
+      url: this.props.celebsBaseUrl,
+      dataType: 'json',
+      success: function(data) {
+        var state = this.state;
+        state.celebsData = data;
+        this.setState(state);
+      }.bind(this),
+      error: function(xhr, status) {
+        console.log(xhr, status);
+      }
+    });
+  },
+
+  render: function() {
+    return (
+      <main>
+        <CelebList data={this.state.celebsData} />
+      </main>
+    )
+  }
+});
+
+React.render(<DataEntry celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("data-entry"));
+
+React.render(<Browse celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("browse"));
