@@ -6,25 +6,21 @@ module.exports = function (app) {
         $scope.randomProfile = {};
 
         $scope.getRandom = function () {
-            ApiService.Profiles.get()
+            ApiService.Profiles.getRandom()
                 .success(function (data, status) {
-
-                    $rootScope.profiles = data;
-                    $scope.randomIndex = Math.floor(Math.random() * data.length);
-                    $scope.randomProfile = $rootScope.profiles[$scope.randomIndex];
+                    $scope.randomProfile = data;
                     $scope.initMap();
-                    $rootScope.currentIndex = $scope.randomIndex;
                 })
                 .error(function (data) {
                     $location.path('/');
                 });
         };
 
-        $scope.init = function () {
-            var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
-            $scope.randomProfile = $rootScope.profiles[randomIndex];
-            $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
-        };
+        //$scope.init = function () {
+        //    var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
+        //    $scope.randomProfile = $rootScope.profiles[randomIndex];
+        //    $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
+        //};
 
         $scope.initMap = function () {
             var geoLocation = $scope.randomProfile.burialCoords.split(',');

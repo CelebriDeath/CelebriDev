@@ -14,11 +14,19 @@ module.exports = function(app) {
   });
 
   app.get('/celebs/:id', function(req, res) {
-    Celeb.findOne({_id: req.params.id}, function(err, data) {
-      if (err) return res.status(500).send({'msg': 'could not retrieve celeb'});
+    if (req.params.id == 'random') {
+      Celeb.find({}, function(err, data) {
+        if (err) return res.status(500).send({'msg': 'could not retrieve celebs'});
+        var randomIndex = Math.floor(Math.random() * data.length);
+        res.json(data[randomIndex]);
+      });
+    } else {
+      Celeb.findOne({_id: req.params.id}, function (err, data) {
+        if (err) return res.status(500).send({'msg': 'could not retrieve celebs'});
 
-      res.json(data);
-    });
+        res.json(data);
+      });
+    }
   });
 
   app.post('/celebs', function(req, res) {
