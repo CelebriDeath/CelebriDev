@@ -16,12 +16,6 @@ module.exports = function (app) {
                 });
         };
 
-        //$scope.init = function () {
-        //    var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
-        //    $scope.randomProfile = $rootScope.profiles[randomIndex];
-        //    $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
-        //};
-
         $scope.initMap = function () {
             var geoLocation = $scope.randomProfile.burialCoords.split(',');
             var mapProp = {

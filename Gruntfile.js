@@ -58,20 +58,18 @@ module.exports = function (grunt) {
                 src: ['app/angular/**/*.js', 'app/react/**/*.js'],
                 dest: 'build/bundle.js'
             },
-
             test: {
                 src: ['test/client-side/*-test.js'],
                 dest: 'test/client-side/test-bundle.js'
             },
             karmatest: {
-                src: ['test/karma-tests/*-test.js'],
-                dest: 'test/karma-tests/karma-test-bundle.js'
+                src: ['test/karma_tests/*_test.js'],
+                dest: 'test/karma_tests/karma_test_bundle.js'
             },
             options: {
                 transform: ['reactify', 'debowerify']
             }
         },
-
         karma: {
             unit: {
                 configFile: 'karma.conf.js'
