@@ -91,10 +91,6 @@
   padding: 1em 0;
 }
 
-input {
-  font-size: .5em;
-  margin: .2em;
-}
 
 @media screen and (min-width: 62em) {
 
