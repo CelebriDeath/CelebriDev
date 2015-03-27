@@ -4,6 +4,7 @@ module.exports = function (app) {
     app.controller('profilesMapController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', function ($rootScope, $scope, ApiService, $cookies, $location) {
 
         $scope.randomProfile = {};
+
         $scope.getAll = function () {
             ApiService.Profiles.get()
                 .success(function (data, status) {
