@@ -3,6 +3,8 @@
 module.exports = function (app) {
     app.controller('individualProfileController', ['$rootScope', '$scope', 'ApiService', '$location', '$routeParams', function ($rootScope, $scope, ApiService, $location, $routeParams) {
 
+        $scope.randomProfile = {};
+
         $scope.init = function () {
             ApiService.Profiles.getById($routeParams.id)
                 .success(function (data, status) {

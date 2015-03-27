@@ -102,6 +102,7 @@ module.exports = function (app) {
     app.controller('profilesMapController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', function ($rootScope, $scope, ApiService, $cookies, $location) {
 
         $scope.randomProfile = {};
+
         $scope.getAll = function () {
             ApiService.Profiles.get()
                 .success(function (data, status) {
@@ -171,6 +172,8 @@ module.exports = function (app) {
 
 module.exports = function (app) {
     app.controller('individualProfileController', ['$rootScope', '$scope', 'ApiService', '$location', '$routeParams', function ($rootScope, $scope, ApiService, $location, $routeParams) {
+
+        $scope.randomProfile = {};
 
         $scope.init = function () {
             ApiService.Profiles.getById($routeParams.id)
@@ -33886,6 +33889,45 @@ describe('random profile controller', function() {
     expect(typeof $scope.randomProfile).toBe('object');
   });
 });
+
+describe('individual profile controller', function() {
+  var $ControllerConstructor;
+  var $httpBackend;
+  var $scope;
+
+  beforeEach(angular.mock.module('CelebriDeath'));
+
+  beforeEach(angular.mock.inject(function($rootScope, $controller) {
+    $scope = $rootScope.$new();
+    $ControllerConstructor = $controller;
+  }));
+
+  it('should be able to create a controller', function() {
+    var individualProfileController = $ControllerConstructor('individualProfileController', {$scope: $scope});
+    expect(typeof individualProfileController).toBe('object');
+    expect(typeof $scope.randomProfile).toBe('object');
+  });
+});
+
+describe('profiles map controller', function() {
+  var $ControllerConstructor;
+  var $httpBackend;
+  var $scope;
+
+  beforeEach(angular.mock.module('CelebriDeath'));
+
+  beforeEach(angular.mock.inject(function($rootScope, $controller) {
+    $scope = $rootScope.$new();
+    $ControllerConstructor = $controller;
+  }));
+
+  it('should be able to create a controller', function() {
+    var profilesMapController = $ControllerConstructor('profilesMapController', {$scope: $scope});
+    expect(typeof profilesMapController).toBe('object');
+    expect(typeof $scope.randomProfile).toBe('object');
+  });
+});
+
 
 
 },{"../../app/angular/js/client":1,"./../../bower_components/angular-mocks/angular-mocks.js":9}]},{},[17]);
