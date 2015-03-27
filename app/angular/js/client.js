@@ -38,5 +38,5 @@ CelebriDeath.config(['$routeProvider', function ($routeProvider) {
         })
         .otherwise({
             templateUrl: 'four_oh_four.html'
-        })
+        });
 }]);

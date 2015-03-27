@@ -5,6 +5,10 @@
         "it": true,
         "before": true,
         "after": true,
-        "module": true
+        "module": true,
+        "google": true,
+        "document": true,
+        "angular": true,
+        "beforeEach": true
     }
 }
