@@ -593,7 +593,7 @@ var CelebList = React.createClass({displayName: "CelebList",
   }
 });
 
-var CelebsApp = React.createClass({displayName: "CelebsApp",
+var CelebsData = React.createClass({displayName: "CelebsData",
 
   getInitialState: function() {
     return {celebsData: []};
@@ -623,7 +623,7 @@ var CelebsApp = React.createClass({displayName: "CelebsApp",
 
   render: function() {
     return (
-      React.createElement("main", null, 
+      React.createElement("div", null, 
         React.createElement(CelebForm, {onNewCelebSubmit: this.onNewCeleb, url: this.props.celebsBaseUrl}), 
         React.createElement(CelebList, {data: this.state.celebsData})
       )
@@ -631,7 +631,7 @@ var CelebsApp = React.createClass({displayName: "CelebsApp",
   }
 });
 
-React.render(React.createElement(CelebsApp, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("data-entry"));
+React.render(React.createElement(CelebsData, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("data-entry"));
 
 
 },{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],10:[function(require,module,exports){

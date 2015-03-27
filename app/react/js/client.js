@@ -179,7 +179,7 @@ var CelebList = React.createClass({
   }
 });
 
-var CelebsApp = React.createClass({
+var CelebsData = React.createClass({
 
   getInitialState: function() {
     return {celebsData: []};
@@ -209,12 +209,12 @@ var CelebsApp = React.createClass({
 
   render: function() {
     return (
-      <main>
+      <div>
         <CelebForm onNewCelebSubmit={this.onNewCeleb} url={this.props.celebsBaseUrl}/>
         <CelebList data={this.state.celebsData} />
-      </main>
+      </div>
     )
   }
 });
 
-React.render(<CelebsApp celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("data-entry"));
+React.render(<CelebsData celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("data-entry"));
