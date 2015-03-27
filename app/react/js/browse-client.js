@@ -6,7 +6,8 @@ var ajax = require('jquery').ajax;
 var Celeb = React.createClass({
 
   render: function() {
-    return <li><span>{this.props.data.moniker + ' • '}</span><span>{this.props.data.category1 + ' • '}</span>{this.props.data.age}</li>
+    return <li><a href="https://celebrideath.herokuapp.com/#/profiles/550e1d7b91d7bb030008eb48"><span>{this.props.data.moniker + ' • '}</span>{this.props.data.category1}</a></li>
+    // return <li>{<a href='https://celebrideath.herokuapp.com/#/profiles/' + this.props.data._id + '"'} /> + this.props.data.moniker + ' • ' + this.props.data.category1 + '</a>'}</li>
   }
 });
 
@@ -87,4 +88,4 @@ var Browse = React.createClass({
   }
 });
 
-React.render(<DataEntry celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("browse"));
+React.render(<Browse celebsBaseUrl={'/api/v1/celebs'}/>, document.getElementById("browse"));

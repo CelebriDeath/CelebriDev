@@ -102,6 +102,7 @@ module.exports = function (app) {
     app.controller('profilesMapController', ['$rootScope', '$scope', 'ApiService', '$cookies', '$location', function ($rootScope, $scope, ApiService, $cookies, $location) {
 
         $scope.randomProfile = {};
+
         $scope.getAll = function () {
             ApiService.Profiles.get()
                 .success(function (data, status) {
@@ -171,6 +172,8 @@ module.exports = function (app) {
 
 module.exports = function (app) {
     app.controller('individualProfileController', ['$rootScope', '$scope', 'ApiService', '$location', '$routeParams', function ($rootScope, $scope, ApiService, $location, $routeParams) {
+
+        $scope.randomProfile = {};
 
         $scope.init = function () {
             ApiService.Profiles.getById($routeParams.id)
@@ -323,7 +326,8 @@ var ajax = require("./../../../bower_components/jquery/dist/jquery.js").ajax;
 var Celeb = React.createClass({displayName: "Celeb",
 
   render: function() {
-    return React.createElement("li", null, React.createElement("span", null, this.props.data.moniker + ' • '), React.createElement("span", null, this.props.data.category1 + ' • '), this.props.data.age)
+    return React.createElement("li", null, React.createElement("a", {href: "https://celebrideath.herokuapp.com/#/profiles/550e1d7b91d7bb030008eb48"}, React.createElement("span", null, this.props.data.moniker + ' • '), this.props.data.category1))
+    // return <li>{<a href='https://celebrideath.herokuapp.com/#/profiles/' + this.props.data._id + '"'} /> + this.props.data.moniker + ' • ' + this.props.data.category1 + '</a>'}</li>
   }
 });
 
@@ -404,7 +408,7 @@ var Browse = React.createClass({displayName: "Browse",
   }
 });
 
-React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("browse"));
+React.render(React.createElement(Browse, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("browse"));
 
 
 },{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],9:[function(require,module,exports){
@@ -413,10 +417,12 @@ React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), 
 var React = require("./../../../bower_components/react/react.js");
 var ajax = require("./../../../bower_components/jquery/dist/jquery.js").ajax;
 
+var celebsData = [{moniker: 'John F. Kennedy', category: 'politician', deathDate: 19631122, _id: 1}];
+
 var Celeb = React.createClass({displayName: "Celeb",
 
   render: function() {
-    return React.createElement("li", null, React.createElement("span", null, this.props.data.moniker + ' • '), React.createElement("span", null, this.props.data.category1 + ' • '), this.props.data.age)
+    return React.createElement("li", null, React.createElement("span", null, this.props.data.moniker + ' • '), React.createElement("span", null, this.props.data.category1 + ' • '), this.props.data.death)
   }
 });
 
@@ -587,7 +593,7 @@ var CelebList = React.createClass({displayName: "CelebList",
   }
 });
 
-var DataEntry = React.createClass({displayName: "DataEntry",
+var CelebsApp = React.createClass({displayName: "CelebsApp",
 
   getInitialState: function() {
     return {celebsData: []};
@@ -625,44 +631,7 @@ var DataEntry = React.createClass({displayName: "DataEntry",
   }
 });
 
-var Browse = React.createClass({displayName: "Browse",
-
-  getInitialState: function() {
-    return {celebsData: []};
-  },
-
-  onNewCeleb: function(celeb) {
-    celeb._id = this.state.celebsData.length + 1;
-    var stateCopy = this.state;
-    stateCopy.celebsData.push(celeb);
-    this.setState(stateCopy);
-  },
-
-  componentDidMount: function() {
-    ajax({
-      url: this.props.celebsBaseUrl,
-      dataType: 'json',
-      success: function(data) {
-        var state = this.state;
-        state.celebsData = data;
-        this.setState(state);
-      }.bind(this),
-      error: function(xhr, status) {
-        console.log(xhr, status);
-      }
-    });
-  },
-
-  render: function() {
-    return (
-      React.createElement("main", null, 
-        React.createElement(CelebList, {data: this.state.celebsData})
-      )
-    )
-  }
-});
-
-React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("data-entry"));
+React.render(React.createElement(CelebsApp, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("data-entry"));
 
 
 },{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],10:[function(require,module,exports){
