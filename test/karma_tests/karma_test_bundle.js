@@ -39,7 +39,7 @@ CelebriDeath.config(['$routeProvider', function ($routeProvider) {
         })
         .otherwise({
             templateUrl: 'four_oh_four.html'
-        })
+        });
 }]);
 
 
@@ -69,7 +69,7 @@ function getProfles() {
     }
     return output;
 }
-function getRandomProfile () {
+function getRandomProfile() {
     return {
         moniker: chance.string({length: 5}),
         category1: chance.string({length: 6}),
@@ -92,7 +92,7 @@ function getRandomProfile () {
         burialCountry: chance.country(),
         burialFacility: chance.sentence({words: 5}),
         howDied: chance.string({length: 5})
-    }
+    };
 }
 
 },{"./../../../../bower_components/chance/chance.js":12}],3:[function(require,module,exports){
@@ -114,12 +114,6 @@ module.exports = function (app) {
                 });
         };
 
-        //$scope.showAll = function () {
-        //    $scope.filteredProfile = $scope.allProfile;
-        //    alert($scope.filteredProfile);
-        //    $scope.initMap();
-        //};
-
         $scope.search = function (input) {
             $scope.filteredProfile = $scope.allProfile.filter(function (item) {
                 return item.moniker.indexOf(input) > -1;
@@ -131,9 +125,9 @@ module.exports = function (app) {
 
         $scope.initMap = function () {
             var mapProp = {
-                center:new google.maps.LatLng(39.234416, -94.848398),
-                zoom:3,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
+                center: new google.maps.LatLng(39.234416, -94.848398),
+                zoom: 3,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
@@ -149,24 +143,23 @@ module.exports = function (app) {
                     map: map
                 });
 
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
                         var currentPerson = $scope.filteredProfile[i];
                         var contentString =
-                                '<h2>' + currentPerson.moniker + '</h2>' +
-                                '<h3>' + currentPerson.category1 + '</h3>' +
-                                '<p><a href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
+                            '<h2>' + currentPerson.moniker + '</h2>' +
+                            '<h3>' + currentPerson.category1 + '</h3>' +
+                            '<p><a href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
 
 
                         infowindow.setContent(contentString);
                         infowindow.open(map, marker);
-                    }
+                    };
                 })(marker, i));
             }
 
 
         };
-
 
 
     }]);
@@ -208,7 +201,7 @@ module.exports = function (app) {
             google.maps.event.addListener(marker, 'click', toggleBounce);
             function toggleBounce() {
 
-                if (marker.getAnimation() != null) {
+                if (marker.getAnimation() !== null) {
                     marker.setAnimation(null);
                 } else {
                     marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -258,7 +251,7 @@ module.exports = function (app) {
             google.maps.event.addListener(marker, 'click', toggleBounce);
             function toggleBounce() {
 
-                if (marker.getAnimation() != null) {
+                if (marker.getAnimation() !== null) {
                     marker.setAnimation(null);
                 } else {
                     marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -274,13 +267,13 @@ module.exports = function (app) {
 },{}],6:[function(require,module,exports){
 'use strict';
 
-module.exports = function(app) {
-    app.directive('googleMapDirective', function() {
+module.exports = function (app) {
+    app.directive('googleMapDirective', function () {
         return {
             restrict: 'A',
             templateUrl: './angular/templates/profiles/directives/google_map_directive.html',
             replace: true
-        }
+        };
     });
 };
 
@@ -2744,26 +2737,6 @@ if (window.jasmine || window.mocha) {
         return !!currentSpec;
       };
 
-<<<<<<< HEAD:build/bundle.js
-CelebriDeath.config(['$routeProvider', function ($routeProvider) {
-    $routeProvider
-        .when('/', {
-            templateUrl: 'angular/templates/profiles/random_profile.html',
-            controller: 'randomProfileController'
-        })
-        .when('/profiles/:id', {
-            templateUrl: 'angular/templates/profiles/individual_profile.html',
-            controller: 'individualProfileController'
-        })
-        .when('/maps', {
-            templateUrl: 'angular/templates/maps/profiles_map.html',
-            controller: 'profilesMapController'
-        })
-        .otherwise({
-            templateUrl: 'four_oh_four.html'
-        });
-}]);
-=======
   angular.mock.$$annotate = angular.injector.$$annotate;
   angular.injector.$$annotate = function(fn) {
     if (typeof fn === 'function' && !fn.$inject) {
@@ -2771,7 +2744,6 @@ CelebriDeath.config(['$routeProvider', function ($routeProvider) {
     }
     return angular.mock.$$annotate.apply(this, arguments);
   };
->>>>>>> master:test/karma_tests/karma_test_bundle.js
 
 
   (window.beforeEach || window.setup)(function() {
@@ -2785,47 +2757,6 @@ CelebriDeath.config(['$routeProvider', function ($routeProvider) {
     annotatedFunctions.forEach(function(fn) {
       delete fn.$inject;
     });
-<<<<<<< HEAD:build/bundle.js
-};
-
-function getProfles() {
-    var numberOfProfile = 20;
-    var output = [];
-    for (var i = 0; i < numberOfProfile; i++) {
-        output.push(getRandomProfile());
-    }
-    return output;
-}
-function getRandomProfile() {
-    return {
-        moniker: chance.string({length: 5}),
-        category1: chance.string({length: 6}),
-        category2: chance.string({length: 5}),
-        category3: chance.string({length: 5}),
-        lastName: chance.last(),
-        firstName: chance.first(),
-        middleName: chance.string({length: 2}).toUpperCase(),
-        suffix: chance.suffix(),
-        birth: chance.birthday({string: true}),
-        death: chance.birthday({string: true}),
-        age: chance.age(),
-        bio: chance.paragraph({sentences: 3}),
-        photoLink: chance.url(),
-        burialCoords: chance.coordinates(),
-        burialAddy: chance.address(),
-        burialCity: chance.city(),
-        burialState: chance.state(),
-        burialZIP: chance.zip(),
-        burialCountry: chance.country(),
-        burialFacility: chance.sentence({words: 5}),
-        howDied: chance.string({length: 5})
-    };
-}
-
-},{"chance":1}],4:[function(require,module,exports){
-'use strict';
-=======
->>>>>>> master:test/karma_tests/karma_test_bundle.js
 
     angular.forEach(currentSpec.$modules, function(module) {
       if (module && module.$$hashKey) {
@@ -2842,20 +2773,10 @@ function getRandomProfile() {
       injector.get('$browser').pollFns.length = 0;
     }
 
-<<<<<<< HEAD:build/bundle.js
-        $scope.initMap = function () {
-            var mapProp = {
-                center: new google.maps.LatLng(39.234416, -94.848398),
-                zoom: 3,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-=======
     // clean up jquery's fragment cache
     angular.forEach(angular.element.fragments, function(val, key) {
       delete angular.element.fragments[key];
     });
->>>>>>> master:test/karma_tests/karma_test_bundle.js
 
     MockXhr.$$lastInstance = null;
 
@@ -2994,21 +2915,6 @@ function getRandomProfile() {
    * @param {...Function} fns any number of functions which will be injected using the injector.
    */
 
-<<<<<<< HEAD:build/bundle.js
-                google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                    return function () {
-                        var currentPerson = $scope.filteredProfile[i];
-                        var contentString =
-                            '<h2>' + currentPerson.moniker + '</h2>' +
-                            '<h3>' + currentPerson.category1 + '</h3>' +
-                            '<p><a href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
-
-
-                        infowindow.setContent(contentString);
-                        infowindow.open(map, marker);
-                    };
-                })(marker, i));
-=======
 
 
   var ErrorAddingDeclarationLocationStack = function(e, errorForStack) {
@@ -3039,7 +2945,6 @@ function getRandomProfile() {
           angular.forEach(modules, function(moduleFn) {
             if (typeof moduleFn === "function") {
               angular.injector.$$annotate(moduleFn);
->>>>>>> master:test/karma_tests/karma_test_bundle.js
             }
           });
         }
@@ -3069,56 +2974,6 @@ function getRandomProfile() {
   };
 
 
-<<<<<<< HEAD:build/bundle.js
-        };
-
-
-    }]);
-};
-
-
-},{}],5:[function(require,module,exports){
-'use strict';
-
-module.exports = function (app) {
-    app.controller('individualProfileController', ['$rootScope', '$scope', 'ApiService', '$location', '$routeParams', function ($rootScope, $scope, ApiService, $location, $routeParams) {
-
-        $scope.init = function () {
-            ApiService.Profiles.getById($routeParams.id)
-                .success(function (data, status) {
-                    $scope.randomProfile = data;
-                    $scope.initMap();
-                })
-                .error(function (data) {
-                    $location.path('/');
-                });
-        };
-
-        $scope.initMap = function () {
-            var geoLocation = $scope.randomProfile.burialCoords.split(',');
-            var mapProp = {
-                center:new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
-                zoom:8,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            var marker = new google.maps.Marker({
-                position: mapProp.center,
-                map: map,
-                draggable:true,
-                animation: google.maps.Animation.DROP
-            });
-
-            google.maps.event.addListener(marker, 'click', toggleBounce);
-            function toggleBounce() {
-
-                if (marker.getAnimation() !== null) {
-                    marker.setAnimation(null);
-                } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
-            }
-=======
   angular.mock.inject.strictDi = function(value) {
     value = arguments.length ? !!value : true;
     return isSpecRunning() ? workFn() : workFn;
@@ -3134,7 +2989,6 @@ module.exports = function (app) {
     }
   };
 }
->>>>>>> master:test/karma_tests/karma_test_bundle.js
 
 
 })(window, window.angular);
@@ -3187,812 +3041,6 @@ function $RouteProvider() {
     return angular.extend(Object.create(parent), extra);
   }
 
-<<<<<<< HEAD:build/bundle.js
-        $scope.randomProfile = {};
-
-        $scope.getRandom = function () {
-            ApiService.Profiles.getRandom()
-                .success(function (data, status) {
-                    $scope.randomProfile = data;
-                    $scope.initMap();
-                })
-                .error(function (data) {
-                    $location.path('/');
-                });
-        };
-
-        //$scope.init = function () {
-        //    var randomIndex = Math.floor(Math.random() * $rootScope.profiles.length);
-        //    $scope.randomProfile = $rootScope.profiles[randomIndex];
-        //    $scope.randomProfile.photoLink = pictureUrls[Math.floor(Math.random() * pictureUrls.length)];
-        //};
-
-        $scope.initMap = function () {
-            var geoLocation = $scope.randomProfile.burialCoords.split(',');
-            var mapProp = {
-                center:new google.maps.LatLng(parseFloat(geoLocation[0]), parseFloat(geoLocation[1])),
-                zoom:8,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            var marker = new google.maps.Marker({
-                position: mapProp.center,
-                map: map,
-                draggable:true,
-                animation: google.maps.Animation.DROP
-            });
-            google.maps.event.addListener(marker, 'click', toggleBounce);
-            function toggleBounce() {
-
-                if (marker.getAnimation() !== null) {
-                    marker.setAnimation(null);
-                } else {
-                    marker.setAnimation(google.maps.Animation.BOUNCE);
-                }
-            }
-
-        };
-
-    }]);
-};
-
-
-},{}],7:[function(require,module,exports){
-'use strict';
-
-module.exports = function (app) {
-    app.directive('googleMapDirective', function () {
-        return {
-            restrict: 'A',
-            templateUrl: './angular/templates/profiles/directives/google_map_directive.html',
-            replace: true
-        };
-    });
-};
-
-
-},{}],8:[function(require,module,exports){
-'use strict';
-
-module.exports = function (app) {
-
-    app.service('ApiService', ['$http',
-        function ($http) {
-            function request(route, method, data) {
-                var config = {
-                    url: route,
-                    method: method
-                };
-                if (data) {
-                    config.data = data;
-                }
-                return $http(config);
-            }
-
-            var restUrl = '/api/v1';
-            return {
-
-                Profiles: {
-                    get: function () {
-                        return request(restUrl + '/celebs', 'GET');
-                    },
-                    getRandom: function () {
-                        return request(restUrl + '/celebs/random', 'GET');
-                    },
-                    getById: function (id) {
-                        return request(restUrl + '/celebs/' + id, 'GET');
-                    }
-                }
-            };
-        }]);
-};
-
-},{}],9:[function(require,module,exports){
-'use strict';
-
-var React = require("./../../../bower_components/react/react.js");
-var ajax = require("./../../../bower_components/jquery/dist/jquery.js").ajax;
-
-var Celeb = React.createClass({displayName: "Celeb",
-
-  render: function() {
-    return React.createElement("li", null, React.createElement("span", null, this.props.data.moniker + ' • '), React.createElement("span", null, this.props.data.category1 + ' • '), this.props.data.age)
-  }
-});
-
-var CelebForm = React.createClass({displayName: "CelebForm",
-
-  getInitialState: function() {
-    return {newCeleb: {moniker: '', category: '', deathDate: ''}};
-  },
-
-  profileChange: function(event) {
-    var stateCopy = this.state;
-    if (event.target.name === 'new-moniker')
-      stateCopy.newCeleb.moniker = event.target.value;
-    if (event.target.name === 'new-category1')
-      stateCopy.newCeleb.category1 = event.target.value;
-    if (event.target.name === 'new-category2')
-      stateCopy.newCeleb.category2 = event.target.value;
-    if (event.target.name === 'new-category3')
-      stateCopy.newCeleb.category3 = event.target.value;
-    if (event.target.name === 'new-lastName')
-      stateCopy.newCeleb.lastName = event.target.value;
-    if (event.target.name === 'new-firstName')
-      stateCopy.newCeleb.firstName = event.target.value;
-    if (event.target.name === 'new-middleName')
-      stateCopy.newCeleb.middleName = event.target.value;
-    if (event.target.name === 'new-suffix')
-      stateCopy.newCeleb.suffix = event.target.value;
-    if (event.target.name === 'new-birth')
-      stateCopy.newCeleb.birth = event.target.value;
-    if (event.target.name === 'new-death')
-      stateCopy.newCeleb.death = event.target.value;
-    if (event.target.name === 'new-age')
-      stateCopy.newCeleb.age = event.target.value;
-    if (event.target.name === 'new-bio')
-      stateCopy.newCeleb.bio = event.target.value;
-    if (event.target.name === 'new-photoLink')
-      stateCopy.newCeleb.photoLink = event.target.value;
-    if (event.target.name === 'new-burialCoords')
-      stateCopy.newCeleb.burialCoords = event.target.value;
-    if (event.target.name === 'new-burialAddy')
-      stateCopy.newCeleb.burialAddy = event.target.value;
-    if (event.target.name === 'new-burialCity')
-      stateCopy.newCeleb.burialCity = event.target.value;
-    if (event.target.name === 'new-burialState')
-      stateCopy.newCeleb.burialState = event.target.value;
-    if (event.target.name === 'new-burialZIP')
-      stateCopy.newCeleb.burialZIP = event.target.value;
-    if (event.target.name === 'new-burialCountry')
-      stateCopy.newCeleb.burialCountry = event.target.value;
-    if (event.target.name === 'new-burialFacility')
-      stateCopy.newCeleb.burialFacility = event.target.value;
-    if (event.target.name === 'new-howDied')
-      stateCopy.newCeleb.howDied = event.target.value;
-    this.setState(stateCopy);
-  },
-
-  profileSubmit: function(event) {
-    event.preventDefault();
-    console.log(this.state.newCeleb);
-    var newCeleb = this.state.newCeleb;
-    ajax({
-      url: this.props.url,
-      contentType: 'application/json',
-      type: 'POST',
-      data: JSON.stringify(newCeleb),
-      success: function(data) {
-        this.props.onNewCelebSubmit(data);
-        // the next line clears the form after hitting submit button
-        this.setState({newCeleb: {moniker: '', category: '', deathDate: ''}});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-      }
-    });
-  },
-
-  render: function() {
-    return (
-
-      React.createElement("form", {onSubmit: this.profileSubmit}, 
-        React.createElement("h3", null, "Stuff")
-      )
-    )
-  }
-});
-
-var CelebList = React.createClass({displayName: "CelebList",
-
-  render: function() {
-    var celebs = this.props.data.map(function(celeb) {
-      return React.createElement(Celeb, {data: celeb, key: celeb._id});
-    });
-    return (
-      React.createElement("section", null, 
-        React.createElement("h1", {class: "titleFont"}, "List of All Celebrities in Database:"), 
-        React.createElement("ul", null, 
-          celebs
-        )
-      )
-    )
-  }
-});
-
-var DataEntry = React.createClass({displayName: "DataEntry",
-
-  getInitialState: function() {
-    return {celebsData: []};
-  },
-
-  onNewCeleb: function(celeb) {
-    celeb._id = this.state.celebsData.length + 1;
-    var stateCopy = this.state;
-    stateCopy.celebsData.push(celeb);
-    this.setState(stateCopy);
-  },
-
-  componentDidMount: function() {
-    ajax({
-      url: this.props.celebsBaseUrl,
-      dataType: 'json',
-      success: function(data) {
-        var state = this.state;
-        state.celebsData = data;
-        this.setState(state);
-      }.bind(this),
-      error: function(xhr, status) {
-        console.log(xhr, status);
-      }
-    });
-  },
-
-  render: function() {
-    return (
-      React.createElement("main", {class: "contain cf"}, 
-        React.createElement(CelebList, {data: this.state.celebsData})
-      )
-    )
-  }
-});
-
-var Browse = React.createClass({displayName: "Browse",
-
-  getInitialState: function() {
-    return {celebsData: []};
-  },
-
-  onNewCeleb: function(celeb) {
-    celeb._id = this.state.celebsData.length + 1;
-    var stateCopy = this.state;
-    stateCopy.celebsData.push(celeb);
-    this.setState(stateCopy);
-  },
-
-  componentDidMount: function() {
-    ajax({
-      url: this.props.celebsBaseUrl,
-      dataType: 'json',
-      success: function(data) {
-        var state = this.state;
-        state.celebsData = data;
-        this.setState(state);
-      }.bind(this),
-      error: function(xhr, status) {
-        console.log(xhr, status);
-      }
-    });
-  },
-
-  render: function() {
-    return (
-      React.createElement("main", {class: "contain cf"}, 
-        React.createElement(CelebList, {data: this.state.celebsData})
-      )
-    )
-  }
-});
-
-React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("browse"));
-
-
-},{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],10:[function(require,module,exports){
-'use strict';
-
-var React = require("./../../../bower_components/react/react.js");
-var ajax = require("./../../../bower_components/jquery/dist/jquery.js").ajax;
-
-var Celeb = React.createClass({displayName: "Celeb",
-
-  render: function() {
-    return React.createElement("li", null, React.createElement("span", null, this.props.data.moniker + ' • '), React.createElement("span", null, this.props.data.category1 + ' • '), this.props.data.age)
-  }
-});
-
-var CelebForm = React.createClass({displayName: "CelebForm",
-
-  getInitialState: function() {
-    return {newCeleb: {moniker: '', category: '', deathDate: ''}};
-  },
-
-  profileChange: function(event) {
-    var stateCopy = this.state;
-    if (event.target.name === 'new-moniker')
-      stateCopy.newCeleb.moniker = event.target.value;
-    if (event.target.name === 'new-category1')
-      stateCopy.newCeleb.category1 = event.target.value;
-    if (event.target.name === 'new-category2')
-      stateCopy.newCeleb.category2 = event.target.value;
-    if (event.target.name === 'new-category3')
-      stateCopy.newCeleb.category3 = event.target.value;
-    if (event.target.name === 'new-lastName')
-      stateCopy.newCeleb.lastName = event.target.value;
-    if (event.target.name === 'new-firstName')
-      stateCopy.newCeleb.firstName = event.target.value;
-    if (event.target.name === 'new-middleName')
-      stateCopy.newCeleb.middleName = event.target.value;
-    if (event.target.name === 'new-suffix')
-      stateCopy.newCeleb.suffix = event.target.value;
-    if (event.target.name === 'new-birth')
-      stateCopy.newCeleb.birth = event.target.value;
-    if (event.target.name === 'new-death')
-      stateCopy.newCeleb.death = event.target.value;
-    if (event.target.name === 'new-age')
-      stateCopy.newCeleb.age = event.target.value;
-    if (event.target.name === 'new-bio')
-      stateCopy.newCeleb.bio = event.target.value;
-    if (event.target.name === 'new-photoLink')
-      stateCopy.newCeleb.photoLink = event.target.value;
-    if (event.target.name === 'new-burialCoords')
-      stateCopy.newCeleb.burialCoords = event.target.value;
-    if (event.target.name === 'new-burialAddy')
-      stateCopy.newCeleb.burialAddy = event.target.value;
-    if (event.target.name === 'new-burialCity')
-      stateCopy.newCeleb.burialCity = event.target.value;
-    if (event.target.name === 'new-burialState')
-      stateCopy.newCeleb.burialState = event.target.value;
-    if (event.target.name === 'new-burialZIP')
-      stateCopy.newCeleb.burialZIP = event.target.value;
-    if (event.target.name === 'new-burialCountry')
-      stateCopy.newCeleb.burialCountry = event.target.value;
-    if (event.target.name === 'new-burialFacility')
-      stateCopy.newCeleb.burialFacility = event.target.value;
-    if (event.target.name === 'new-howDied')
-      stateCopy.newCeleb.howDied = event.target.value;
-    this.setState(stateCopy);
-  },
-
-  profileSubmit: function(event) {
-    event.preventDefault();
-    console.log(this.state.newCeleb);
-    var newCeleb = this.state.newCeleb;
-    ajax({
-      url: this.props.url,
-      contentType: 'application/json',
-      type: 'POST',
-      data: JSON.stringify(newCeleb),
-      success: function(data) {
-        this.props.onNewCelebSubmit(data);
-        // the next line clears the form after hitting submit button
-        this.setState({newCeleb: {moniker: '', category: '', deathDate: ''}});
-      }.bind(this),
-      error: function(xhr, status, err) {
-        console.log(err);
-      }
-    });
-  },
-
-  render: function() {
-    return (
-
-      React.createElement("form", {onSubmit: this.profileSubmit}, 
-        React.createElement("h3", null, "Data Entry Instructions"), 
-        React.createElement("h4", null, "1. Most data can be pulled from Wikipedia and www.findagrave.com; do not worry about giving citations."), 
-        React.createElement("h4", null, "2. For the coordinates, look for them inside the link on Google Maps. Will look something like the example below."), 
-        React.createElement("h4", null, "3. THANKS! Every little bit helps. We can edit later."), 
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-moniker"}), 
-        React.createElement("input", {id: "new-moniker", type: "text", value: this.state.newCeleb.moniker, onChange: this.profileChange, name: "new-moniker"}), " Moniker: (Marilyn Monroe)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-category1"}), 
-        React.createElement("input", {id: "new-category1", type: "text", value: this.state.newCeleb.category1, onChange: this.profileChange, name: "new-category1"}), " Category 1: (Actor)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-category2"}), 
-        React.createElement("input", {id: "new-category2", type: "text", value: this.state.newCeleb.category2, onChange: this.profileChange, name: "new-category2"}), " Category 2: (Model)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-category3"}), 
-        React.createElement("input", {id: "new-category3", type: "text", value: this.state.newCeleb.category3, onChange: this.profileChange, name: "new-category3"}), " Category 3: (Wife of Joe DiMaggio and Arthur Miller)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-lastName"}), 
-        React.createElement("input", {id: "new-lastName", type: "text", value: this.state.newCeleb.lastName, onChange: this.profileChange, name: "new-lastName"}), " Last Name: (Baker)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-firstName"}), 
-        React.createElement("input", {id: "new-firstName", type: "text", value: this.state.newCeleb.firstName, onChange: this.profileChange, name: "new-firstName"}), " First Name: (Norma)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-middleName"}), 
-        React.createElement("input", {id: "new-middleName", type: "text", value: this.state.newCeleb.middleName, onChange: this.profileChange, name: "new-middleName"}), " Middle Name: (Jeane)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-suffix"}), 
-        React.createElement("input", {id: "new-suffix", type: "text", value: this.state.newCeleb.suffix, onChange: this.profileChange, name: "new-suffix"}), " Suffix: ( )"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-birth"}), 
-        React.createElement("input", {id: "new-birth", type: "text", value: this.state.newCeleb.birth, onChange: this.profileChange, name: "new-birth"}), " Birth: (19260601) YYYYMMDD"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-death"}), 
-        React.createElement("input", {id: "new-death", type: "text", value: this.state.newCeleb.death, onChange: this.profileChange, name: "new-death"}), " Death: (19620805) YYYYMMDD"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-howDied"}), 
-        React.createElement("input", {id: "new-howDied", type: "text", value: this.state.newCeleb.howDied, onChange: this.profileChange, name: "new-howDied"}), " How Died: (Overdose)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-age"}), 
-        React.createElement("input", {id: "new-age", type: "text", value: this.state.newCeleb.age, onChange: this.profileChange, name: "new-age"}), " Age: (36)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-death"}), 
-        React.createElement("input", {id: "new-bio", type: "text", value: this.state.newCeleb.bio, onChange: this.profileChange, name: "new-bio"}), " Bio: (Just cut and paste the first paragraph of Wikipedia for now)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-photoLink"}), 
-        React.createElement("input", {id: "new-photoLink", type: "text", value: this.state.newCeleb.photoLink, onChange: this.profileChange, name: "new-photoLink"}), "  Photo Link: (\"right-click on the image to get its link\")"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialCoords"}), 
-        React.createElement("input", {id: "new-burialCoords", type: "text", value: this.state.newCeleb.burialCoords, onChange: this.profileChange, name: "new-burialCoords"}), " Grave - Coordinates: (34.05847, -118.43979)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialAddy"}), 
-        React.createElement("input", {id: "new-burialAddy", type: "text", value: this.state.newCeleb.burialAddy, onChange: this.profileChange, name: "new-burialAddy"}), " Grave - Address: (1218 Glendon Avenue)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialCity"}), 
-        React.createElement("input", {id: "new-burialCity", type: "text", value: this.state.newCeleb.burialCity, onChange: this.profileChange, name: "new-burialCity"}), " Grave - City: (Los Angeles)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialState"}), 
-        React.createElement("input", {id: "new-burialState", type: "text", value: this.state.newCeleb.burialState, onChange: this.profileChange, name: "new-burialState"}), " Grave - State: (CA)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialZIP"}), 
-        React.createElement("input", {id: "new-burialZIP", type: "text", value: this.state.newCeleb.burialZIP, onChange: this.profileChange, name: "new-burialZIP"}), " Grave - ZIP: (90024)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialCountry"}), 
-        React.createElement("input", {id: "new-burialCountry", type: "text", value: this.state.newCeleb.burialCountry, onChange: this.profileChange, name: "new-burialCountry"}), " Grave - Country: (USA)"), 
-
-        React.createElement("p", null, React.createElement("label", {htmlFor: "new-burialFacility"}), 
-        React.createElement("input", {id: "new-burialFacility", type: "text", value: this.state.newCeleb.burialFacility, onChange: this.profileChange, name: "new-burialFacility"}), " Grave - Facility: (Westwood Village Memorial Park Cemetery)"), 
-
-        React.createElement("button", {type: "submit"}, "Create New Celebrity")
-      )
-    )
-  }
-});
-
-var CelebList = React.createClass({displayName: "CelebList",
-
-  render: function() {
-    var celebs = this.props.data.map(function(celeb) {
-      return React.createElement(Celeb, {data: celeb, key: celeb._id});
-    });
-    return (
-      React.createElement("section", null, 
-        React.createElement("h1", null, "Dead Celebrities Already Entered:"), 
-        React.createElement("ul", null, 
-          celebs
-        )
-      )
-    )
-  }
-});
-
-var DataEntry = React.createClass({displayName: "DataEntry",
-
-  getInitialState: function() {
-    return {celebsData: []};
-  },
-
-  onNewCeleb: function(celeb) {
-    celeb._id = this.state.celebsData.length + 1;
-    var stateCopy = this.state;
-    stateCopy.celebsData.push(celeb);
-    this.setState(stateCopy);
-  },
-
-  componentDidMount: function() {
-    ajax({
-      url: this.props.celebsBaseUrl,
-      dataType: 'json',
-      success: function(data) {
-        var state = this.state;
-        state.celebsData = data;
-        this.setState(state);
-      }.bind(this),
-      error: function(xhr, status) {
-        console.log(xhr, status);
-      }
-    });
-  },
-
-  render: function() {
-    return (
-      React.createElement("main", null, 
-        React.createElement(CelebForm, {onNewCelebSubmit: this.onNewCeleb, url: this.props.celebsBaseUrl}), 
-        React.createElement(CelebList, {data: this.state.celebsData})
-      )
-    )
-  }
-});
-
-var Browse = React.createClass({displayName: "Browse",
-
-  getInitialState: function() {
-    return {celebsData: []};
-  },
-
-  onNewCeleb: function(celeb) {
-    celeb._id = this.state.celebsData.length + 1;
-    var stateCopy = this.state;
-    stateCopy.celebsData.push(celeb);
-    this.setState(stateCopy);
-  },
-
-  componentDidMount: function() {
-    ajax({
-      url: this.props.celebsBaseUrl,
-      dataType: 'json',
-      success: function(data) {
-        var state = this.state;
-        state.celebsData = data;
-        this.setState(state);
-      }.bind(this),
-      error: function(xhr, status) {
-        console.log(xhr, status);
-      }
-    });
-  },
-
-  render: function() {
-    return (
-      React.createElement("main", null, 
-        React.createElement(CelebList, {data: this.state.celebsData})
-      )
-    )
-  }
-});
-
-React.render(React.createElement(DataEntry, {celebsBaseUrl: '/api/v1/celebs'}), document.getElementById("data-entry"));
-
-
-},{"./../../../bower_components/jquery/dist/jquery.js":14,"./../../../bower_components/react/react.js":15}],11:[function(require,module,exports){
-/**
- * @license AngularJS v1.3.15
- * (c) 2010-2014 Google, Inc. http://angularjs.org
- * License: MIT
- */
-(function(window, angular, undefined) {'use strict';
-
-/**
- * @ngdoc module
- * @name ngCookies
- * @description
- *
- * # ngCookies
- *
- * The `ngCookies` module provides a convenient wrapper for reading and writing browser cookies.
- *
- *
- * <div doc-module-components="ngCookies"></div>
- *
- * See {@link ngCookies.$cookies `$cookies`} and
- * {@link ngCookies.$cookieStore `$cookieStore`} for usage.
- */
-
-
-angular.module('ngCookies', ['ng']).
-  /**
-   * @ngdoc service
-   * @name $cookies
-   *
-   * @description
-   * Provides read/write access to browser's cookies.
-   *
-   * Only a simple Object is exposed and by adding or removing properties to/from this object, new
-   * cookies are created/deleted at the end of current $eval.
-   * The object's properties can only be strings.
-   *
-   * Requires the {@link ngCookies `ngCookies`} module to be installed.
-   *
-   * @example
-   *
-   * ```js
-   * angular.module('cookiesExample', ['ngCookies'])
-   *   .controller('ExampleController', ['$cookies', function($cookies) {
-   *     // Retrieving a cookie
-   *     var favoriteCookie = $cookies.myFavorite;
-   *     // Setting a cookie
-   *     $cookies.myFavorite = 'oatmeal';
-   *   }]);
-   * ```
-   */
-   factory('$cookies', ['$rootScope', '$browser', function($rootScope, $browser) {
-      var cookies = {},
-          lastCookies = {},
-          lastBrowserCookies,
-          runEval = false,
-          copy = angular.copy,
-          isUndefined = angular.isUndefined;
-
-      //creates a poller fn that copies all cookies from the $browser to service & inits the service
-      $browser.addPollFn(function() {
-        var currentCookies = $browser.cookies();
-        if (lastBrowserCookies != currentCookies) { //relies on browser.cookies() impl
-          lastBrowserCookies = currentCookies;
-          copy(currentCookies, lastCookies);
-          copy(currentCookies, cookies);
-          if (runEval) $rootScope.$apply();
-        }
-      })();
-
-      runEval = true;
-
-      //at the end of each eval, push cookies
-      //TODO: this should happen before the "delayed" watches fire, because if some cookies are not
-      //      strings or browser refuses to store some cookies, we update the model in the push fn.
-      $rootScope.$watch(push);
-
-      return cookies;
-
-
-      /**
-       * Pushes all the cookies from the service to the browser and verifies if all cookies were
-       * stored.
-       */
-      function push() {
-        var name,
-            value,
-            browserCookies,
-            updated;
-
-        //delete any cookies deleted in $cookies
-        for (name in lastCookies) {
-          if (isUndefined(cookies[name])) {
-            $browser.cookies(name, undefined);
-          }
-        }
-
-        //update all cookies updated in $cookies
-        for (name in cookies) {
-          value = cookies[name];
-          if (!angular.isString(value)) {
-            value = '' + value;
-            cookies[name] = value;
-          }
-          if (value !== lastCookies[name]) {
-            $browser.cookies(name, value);
-            updated = true;
-          }
-        }
-
-        //verify what was actually stored
-        if (updated) {
-          updated = false;
-          browserCookies = $browser.cookies();
-
-          for (name in cookies) {
-            if (cookies[name] !== browserCookies[name]) {
-              //delete or reset all cookies that the browser dropped from $cookies
-              if (isUndefined(browserCookies[name])) {
-                delete cookies[name];
-              } else {
-                cookies[name] = browserCookies[name];
-              }
-              updated = true;
-            }
-          }
-        }
-      }
-    }]).
-
-
-  /**
-   * @ngdoc service
-   * @name $cookieStore
-   * @requires $cookies
-   *
-   * @description
-   * Provides a key-value (string-object) storage, that is backed by session cookies.
-   * Objects put or retrieved from this storage are automatically serialized or
-   * deserialized by angular's toJson/fromJson.
-   *
-   * Requires the {@link ngCookies `ngCookies`} module to be installed.
-   *
-   * @example
-   *
-   * ```js
-   * angular.module('cookieStoreExample', ['ngCookies'])
-   *   .controller('ExampleController', ['$cookieStore', function($cookieStore) {
-   *     // Put cookie
-   *     $cookieStore.put('myFavorite','oatmeal');
-   *     // Get cookie
-   *     var favoriteCookie = $cookieStore.get('myFavorite');
-   *     // Removing a cookie
-   *     $cookieStore.remove('myFavorite');
-   *   }]);
-   * ```
-   */
-   factory('$cookieStore', ['$cookies', function($cookies) {
-
-      return {
-        /**
-         * @ngdoc method
-         * @name $cookieStore#get
-         *
-         * @description
-         * Returns the value of given cookie key
-         *
-         * @param {string} key Id to use for lookup.
-         * @returns {Object} Deserialized cookie value.
-         */
-        get: function(key) {
-          var value = $cookies[key];
-          return value ? angular.fromJson(value) : value;
-        },
-
-        /**
-         * @ngdoc method
-         * @name $cookieStore#put
-         *
-         * @description
-         * Sets a value for given cookie key
-         *
-         * @param {string} key Id for the `value`.
-         * @param {Object} value Value to be stored.
-         */
-        put: function(key, value) {
-          $cookies[key] = angular.toJson(value);
-        },
-
-        /**
-         * @ngdoc method
-         * @name $cookieStore#remove
-         *
-         * @description
-         * Remove given cookie
-         *
-         * @param {string} key Id of the key-value pair to delete.
-         */
-        remove: function(key) {
-          delete $cookies[key];
-        }
-      };
-
-    }]);
-
-
-})(window, window.angular);
-
-
-},{}],12:[function(require,module,exports){
-/**
- * @license AngularJS v1.3.15
- * (c) 2010-2014 Google, Inc. http://angularjs.org
- * License: MIT
- */
-(function(window, angular, undefined) {'use strict';
-
-/**
- * @ngdoc module
- * @name ngRoute
- * @description
- *
- * # ngRoute
- *
- * The `ngRoute` module provides routing and deeplinking services and directives for angular apps.
- *
- * ## Example
- * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
- *
- *
- * <div doc-module-components="ngRoute"></div>
- */
- /* global -ngRouteModule */
-var ngRouteModule = angular.module('ngRoute', ['ng']).
-                        provider('$route', $RouteProvider),
-    $routeMinErr = angular.$$minErr('ngRoute');
-
-/**
- * @ngdoc provider
- * @name $routeProvider
- *
- * @description
- *
- * Used for configuring routes.
- *
- * ## Example
- * See {@link ngRoute.$route#example $route} for an example of configuring and using `ngRoute`.
- *
- * ## Dependencies
- * Requires the {@link ngRoute `ngRoute`} module to be installed.
- */
-function $RouteProvider() {
-  function inherit(parent, extra) {
-    return angular.extend(Object.create(parent), extra);
-  }
-
-=======
->>>>>>> master:test/karma_tests/karma_test_bundle.js
   var routes = {};
 
   /**
