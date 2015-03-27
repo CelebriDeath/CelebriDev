@@ -62,8 +62,8 @@ module.exports = function(grunt) {
         dest: 'test/client-side/test-bundle.js'
       },
       karmatest: {
-        src: ['test/karma-tests/*-test.js'],
-        dest: 'test/karma-tests/karma-test-bundle.js'
+        src: ['test/karma_tests/*_test.js'],
+        dest: 'test/karma_tests/karma_test_bundle.js'
       },
       options: {
         transform: ['reactify', 'debowerify']
