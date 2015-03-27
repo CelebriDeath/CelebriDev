@@ -86,14 +86,32 @@
   width: 90%;
 }
 
+.searchBar {
+  font-size: 10em;
+  padding: 1em 0;
+}
+
+input {
+  font-size: .5em;
+  margin: .2em;
+}
+
 @media screen and (min-width: 62em) {
 
   .siteNav li {
     font-size: 2em;
   }
 
+  .searchBar {
+    font-size: 1.6em;
+  }
+
   .social li {
     width: 8rem;
+  }
+
+  .searchBar {
+    font-size: 10em;
   }
 
 }
@@ -103,6 +121,10 @@
   .contain {
     width: 100%;
     margin: 0 auto;
+  }
+
+  .searchBar {
+    font-size: 1.6em;
   }
 
   .siteNav li{
@@ -115,7 +137,7 @@
 
   .team {
     float: left;
-    width: 22%;
+    width: 22%
   }
 
   .headshot {
