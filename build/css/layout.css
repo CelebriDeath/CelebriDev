@@ -1,0 +1,144 @@
+
+
+.floatLeft {
+  float: left;
+}
+
+.floatRight {
+  float: right;
+}
+
+.marginBottom {
+  margin-bottom: 2em;
+}
+
+.footer {
+  clear: both;
+}
+
+.clear {
+  clear: both;
+}
+
+.cf:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+
+.contentBox {
+  padding: 1em;
+}
+
+.contentChunk {
+  padding: 2em 2em;
+}
+
+.location {
+  display: inline-block;
+  overflow: hidden;
+}
+
+.social li {
+  float: right;
+  width: 10rem;
+  display: inline-block;
+  padding-right: 1em;
+}
+
+.siteNav li{
+  font-size: 4em;
+  display: inline-block;
+  padding-right: .5em;
+  border-bottom: 2px solid transparent;
+  padding-bottom: .5em;
+}
+
+.bio {
+  padding-top: 1em;
+}
+
+.photoLink {
+  margin: 1em 0;
+}
+
+.preview {
+  position: relative;
+}
+
+.previewButton {
+  float: right;
+  position: absolute;
+  bottom: 1em;
+  right: 1em;
+}
+
+.contactIcon {
+  display: inline-block;
+  width: 5.5em;
+}
+
+.teamBox {
+  padding: 2em;
+}
+
+.team {
+  width: 90%;
+}
+
+@media screen and (min-width: 62em) {
+
+  .siteNav li {
+    font-size: 2em;
+  }
+
+  .social li {
+    width: 8rem;
+  }
+
+}
+
+@media screen and (min-width: 65em) {
+
+  .contain {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .siteNav li{
+    font-size: 1em;
+  }
+
+  .teamBox{
+    width: 100%;
+  }
+
+  .team {
+    float: left;
+    width: 22%;
+  }
+
+  .headshot {
+    width: 50%;
+  }
+
+  .details {
+    width: 50%;
+    display: inline-block;
+    clear: none;
+    margin-left: 1em;
+  }
+
+  .social li {
+    width: 4rem;
+  }
+
+  .contactIcon {
+    width: 1.5em;
+  }
+
+  .contentChunk {
+    width: 60%;
+  }
+
+}
