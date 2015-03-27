@@ -39,7 +39,7 @@ CelebriDeath.config(['$routeProvider', function ($routeProvider) {
         })
         .otherwise({
             templateUrl: 'four_oh_four.html'
-        })
+        });
 }]);
 
 
@@ -69,7 +69,7 @@ function getProfles() {
     }
     return output;
 }
-function getRandomProfile () {
+function getRandomProfile() {
     return {
         moniker: chance.string({length: 5}),
         category1: chance.string({length: 6}),
@@ -92,7 +92,7 @@ function getRandomProfile () {
         burialCountry: chance.country(),
         burialFacility: chance.sentence({words: 5}),
         howDied: chance.string({length: 5})
-    }
+    };
 }
 
 },{"./../../../../bower_components/chance/chance.js":12}],3:[function(require,module,exports){
@@ -126,9 +126,9 @@ module.exports = function (app) {
 
         $scope.initMap = function () {
             var mapProp = {
-                center:new google.maps.LatLng(39.234416, -94.848398),
-                zoom:3,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
+                center: new google.maps.LatLng(39.234416, -94.848398),
+                zoom: 3,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             };
             var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
 
@@ -144,24 +144,23 @@ module.exports = function (app) {
                     map: map
                 });
 
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
+                google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                    return function () {
                         var currentPerson = $scope.filteredProfile[i];
                         var contentString =
-                                '<h2>' + currentPerson.moniker + '</h2>' +
-                                '<h3>' + currentPerson.category1 + '</h3>' +
-                                '<p><a href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
+                            '<h2>' + currentPerson.moniker + '</h2>' +
+                            '<h3>' + currentPerson.category1 + '</h3>' +
+                            '<p><a href="/#/profiles/' + currentPerson._id + '">Detail</a></p>';
 
 
                         infowindow.setContent(contentString);
                         infowindow.open(map, marker);
-                    }
+                    };
                 })(marker, i));
             }
 
 
         };
-
 
 
     }]);
@@ -205,7 +204,7 @@ module.exports = function (app) {
             google.maps.event.addListener(marker, 'click', toggleBounce);
             function toggleBounce() {
 
-                if (marker.getAnimation() != null) {
+                if (marker.getAnimation() !== null) {
                     marker.setAnimation(null);
                 } else {
                     marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -255,7 +254,7 @@ module.exports = function (app) {
             google.maps.event.addListener(marker, 'click', toggleBounce);
             function toggleBounce() {
 
-                if (marker.getAnimation() != null) {
+                if (marker.getAnimation() !== null) {
                     marker.setAnimation(null);
                 } else {
                     marker.setAnimation(google.maps.Animation.BOUNCE);
@@ -271,13 +270,13 @@ module.exports = function (app) {
 },{}],6:[function(require,module,exports){
 'use strict';
 
-module.exports = function(app) {
-    app.directive('googleMapDirective', function() {
+module.exports = function (app) {
+    app.directive('googleMapDirective', function () {
         return {
             restrict: 'A',
             templateUrl: './angular/templates/profiles/directives/google_map_directive.html',
             replace: true
-        }
+        };
     });
 };
 

@@ -1,10 +1,11 @@
 <section ngCloak data-ng-controller="profilesMapController" data-ng-init="getAll()">
-    <h1 class="moniker heading1">All profiles on the map</h1>
-
-        <button data-ng-click="getAll()">Show All</button>
-    <form data-ng-submit="search(userInput)">
-        <label for="search">Search<input id="search" type="text" data-ng-model="userInput"
-                                         placeholder="Type name here"/></label>
+  <section class="contentBox">
+    <h1 class="heading2">All profiles on the map</h1>
+    <form class="searchBar" data-ng-submit="search(userInput)">
+    <label for="search">Search</label>
+    <input id="search" type="text" data-ng-model="userInput" placeholder="Type name here"/>
     </form>
     <div data-google-map-directive></div>
+    <button class="button" data-ng-click="getAll()">Show All</button>
+  </section>
 </section>

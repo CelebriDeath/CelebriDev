@@ -23,7 +23,7 @@ function getProfles() {
     }
     return output;
 }
-function getRandomProfile () {
+function getRandomProfile() {
     return {
         moniker: chance.string({length: 5}),
         category1: chance.string({length: 6}),
@@ -46,5 +46,5 @@ function getRandomProfile () {
         burialCountry: chance.country(),
         burialFacility: chance.sentence({words: 5}),
         howDied: chance.string({length: 5})
-    }
+    };
 }
