@@ -10,21 +10,23 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     jshint: {
-      dev: {
-        options: {
-          node: true,
-          globals: {
-            describe: true,
-            it: true,
-            before: true,
-            after: true,
-            beforeEach: true,
-            expect: true
-          }
+            dev: {
+                options: {
+                    jshintrc: '.jshintrc'
+                },
+                src: ['Gruntfile.js', 'routes/**/*.js', 'models/**/*.js', 'test/**/*.js', '*.js']
+            }
         },
-        src: ['Gruntfile.js', 'app/**/*.js', 'routes/**/*.js', 'models/**/*.js', 'test/**/*.js', '*.js']
-      }
-    },
+        jscs: {
+            all: {
+                options: {
+                    config: ".jscsrc"
+                },
+                files: {
+                    src: ['Gruntfile.js', 'routes/**/*.js', 'models/**/*.js', 'test/**/*.js', '*.js']
+                }
+            }
+        },
 
     simplemocha: {
       all: {
@@ -60,8 +62,8 @@ module.exports = function(grunt) {
         dest: 'test/client-side/test-bundle.js'
       },
       karmatest: {
-        src: ['test/karma-tests/*-test.js'],
-        dest: 'test/karma-tests/karma-test-bundle.js'
+        src: ['test/karma_tests/*_test.js'],
+        dest: 'test/karma_tests/karma_test_bundle.js'
       },
       options: {
         transform: ['reactify', 'debowerify']
@@ -76,10 +78,10 @@ module.exports = function(grunt) {
 
   });
 
-  grunt.registerTask('test', ['jshint:dev', 'simplemocha:all']);
+  grunt.registerTask('test', ['jshint','jscsrc' 'simplemocha:all']);
   grunt.registerTask('test-server', ['simplemocha:all']);
   grunt.registerTask('default', ['test']);
   grunt.registerTask('build', ['clean','browserify', 'copy']);
-  grunt.registerTask('build:test', ['browserify:test']);
+  grunt.registerTask('build:test', ['test', 'browserify:test']);
   grunt.registerTask('test:client', ['browserify:karmatest', 'karma:unit']);
 };
