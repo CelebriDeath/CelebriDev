@@ -1,2 +1,2 @@
 # dev
-This is the as-current-as-we-have-it site mockup.
+[Demo CelebriDeath](https://celebrideath.herokuapp.com)
